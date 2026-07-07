@@ -29,6 +29,22 @@
     grid-template-columns: 1fr;
   }
 
+  .journey-timeline {
+    padding-inline-start: 0;
+  }
+
+  .journey-timeline::before {
+    display: none; /* Hide vertical line on mobile */
+  }
+
+  .journey-step::before {
+    display: none; /* Hide node on mobile */
+  }
+
+  .journey-step {
+    padding: 24px;
+  }
+
   .hero-mark {
     min-height: auto;
   }
@@ -115,6 +131,28 @@
 
   .story-line {
     inset-inline-start: 22px;
+  }
+
+  .system-tab {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+  }
+
+  .system-panel {
+    padding: 20px;
+  }
+
+  .service-block {
+    padding: 24px 20px;
+  }
+
+  .final-cta {
+    padding-block: 60px 80px;
+  }
+
+  .footer-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 
   .story-questions {

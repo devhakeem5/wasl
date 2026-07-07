@@ -681,14 +681,20 @@
 .final-cta .hero-actions {
   justify-content: center;
   margin-block-start: 40px;
+  position: relative;
+  z-index: 2;
 }
 
 .final-cta h2 {
   margin-inline: auto;
+  position: relative;
+  z-index: 2;
 }
 
 .final-cta p:not(.eyebrow) {
   margin-inline: auto;
+  position: relative;
+  z-index: 2;
 }
 
 /* =====================================================================
@@ -699,15 +705,18 @@
   color: var(--muted);
   background: var(--ink);
   font-size: 0.95rem;
+  border-top: 4px solid var(--primary-dark);
 }
 
 .site-footer a {
-  transition: color 200ms ease;
+  transition: color 200ms ease, transform 200ms ease;
+  display: inline-block;
 }
 
 .site-footer a:hover,
 .site-footer a:focus-visible {
   color: var(--white);
+  transform: translateX(-4px); /* RTL hover effect */
 }
 
 .footer-brand {
