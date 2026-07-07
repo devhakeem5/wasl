@@ -44,6 +44,13 @@
   max-width: 680px;
 }
 
+.story-stage {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1.18fr);
+  align-items: start;
+  gap: clamp(28px, 5vw, 72px);
+}
+
 .header-layout {
   display: flex;
   align-items: center;

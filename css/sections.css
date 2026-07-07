@@ -269,6 +269,71 @@
   color: var(--primary);
 }
 
+.story {
+  background:
+    linear-gradient(90deg, rgba(151, 168, 209, 0.12) 1px, transparent 1px),
+    linear-gradient(180deg, var(--white), #f7f9ff);
+  background-size: 80px 80px, auto;
+}
+
+.story::before,
+.story::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.story::before {
+  width: 320px;
+  height: 320px;
+  inset-block-start: 11%;
+  inset-inline-end: -120px;
+  border: 1px solid rgba(237, 183, 92, 0.22);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(237, 183, 92, 0.12), transparent 62%);
+}
+
+.story::after {
+  width: 28%;
+  height: 1px;
+  inset-block-start: 34%;
+  inset-inline-start: 0;
+  background: linear-gradient(90deg, transparent, rgba(237, 183, 92, 0.68));
+}
+
+.story-heading {
+  position: relative;
+  margin-block-end: clamp(34px, 6vw, 68px);
+}
+
+.story-heading h2 {
+  max-width: 920px;
+}
+
+.story-heading p:not(.eyebrow) {
+  color: var(--secondary);
+  font-size: 1.1rem;
+}
+
+.story-memory {
+  position: sticky;
+  top: 110px;
+  padding: 22px;
+  border: 1px solid rgba(151, 168, 209, 0.28);
+  border-radius: var(--radius-sm);
+  background:
+    linear-gradient(145deg, rgba(252, 252, 253, 0.92), rgba(244, 247, 255, 0.86)),
+    radial-gradient(circle at 12% 0%, rgba(237, 183, 92, 0.16), transparent 42%);
+  box-shadow: var(--shadow-soft);
+}
+
+.memory-label {
+  margin-block-end: 16px;
+  color: var(--secondary);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
 .story-body,
 .system-panel,
 .service-block {
@@ -277,28 +342,109 @@
 
 .story-quotes {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-block-end: 34px;
+  gap: 12px;
+  margin-block-end: 22px;
 }
 
 .story-quotes blockquote {
+  position: relative;
   margin: 0;
-  padding: 22px;
-  border-inline-start: 3px solid var(--accent);
+  padding: 18px 18px 18px 20px;
+  border: 1px solid rgba(151, 168, 209, 0.22);
+  border-inline-start: 3px solid rgba(237, 183, 92, 0.56);
   border-radius: var(--radius-sm);
-  color: var(--primary);
-  background: var(--soft);
+  color: rgba(7, 20, 47, 0.74);
+  background: rgba(252, 252, 253, 0.76);
+  font-weight: 700;
+}
+
+.story-quotes blockquote::before {
+  content: "“";
+  position: absolute;
+  inset-block-start: -12px;
+  inset-inline-end: 12px;
+  color: rgba(237, 183, 92, 0.34);
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.memory-turn {
+  margin: 0;
+  padding: 18px;
+  border-radius: var(--radius-sm);
+  color: var(--white);
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   font-weight: 700;
 }
 
 .story-body {
-  max-width: 860px;
+  position: relative;
+  max-width: 820px;
+  padding: clamp(24px, 4vw, 42px);
+  border: 1px solid rgba(151, 168, 209, 0.25);
+  border-radius: var(--radius-sm);
+  background: rgba(252, 252, 253, 0.88);
+  box-shadow: var(--shadow-soft);
+}
+
+.story-body p {
+  position: relative;
+  margin-block-end: 22px;
+  padding-inline-start: 28px;
+  color: #263653;
+}
+
+.story-body p::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 0.72em;
+  inset-inline-start: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 7px rgba(237, 183, 92, 0.14);
+}
+
+.story-line {
+  position: absolute;
+  inset-block: 42px;
+  inset-inline-start: clamp(24px, 4vw, 42px);
+  width: 1px;
+  background: linear-gradient(180deg, var(--accent), rgba(237, 183, 92, 0.1));
+}
+
+.story-questions {
+  display: grid;
+  gap: 10px;
+  margin-block: 28px;
+  padding: 18px;
+  border: 1px solid rgba(0, 40, 137, 0.12);
+  border-radius: var(--radius-sm);
+  background:
+    linear-gradient(135deg, rgba(0, 40, 137, 0.06), rgba(237, 183, 92, 0.1)),
+    var(--white);
+}
+
+.story-questions span {
+  display: block;
+  color: var(--primary);
+  font-weight: 700;
 }
 
 .story-closing {
-  color: var(--primary);
+  margin: 0 !important;
+  padding: 22px 24px !important;
+  border: 1px solid rgba(237, 183, 92, 0.45);
+  border-radius: var(--radius-sm);
+  color: var(--primary) !important;
+  background: linear-gradient(135deg, rgba(237, 183, 92, 0.16), rgba(252, 252, 253, 0.9));
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
   font-weight: 700;
+}
+
+.story-closing::before {
+  display: none;
 }
 
 .journey-step,

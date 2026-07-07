@@ -23,6 +23,7 @@
   .hero-layout,
   .final-cta-layout,
   .system-panels,
+  .story-stage,
   .services-grid,
   .story-quotes {
     grid-template-columns: 1fr;
@@ -40,6 +41,11 @@
     position: relative;
     inset: auto;
     margin-block-start: 18px;
+  }
+
+  .story-memory {
+    position: relative;
+    top: auto;
   }
 }
 
@@ -97,6 +103,22 @@
 
   .hero-proof {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .story-body {
+    padding: 22px;
+  }
+
+  .story-body p {
+    padding-inline-start: 22px;
+  }
+
+  .story-line {
+    inset-inline-start: 22px;
+  }
+
+  .story-questions {
+    padding: 14px;
   }
 
   .button,
