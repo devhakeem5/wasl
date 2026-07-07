@@ -524,19 +524,217 @@
   box-shadow: var(--shadow-soft);
 }
 
+.system-panel h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.system-panel h3::before {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* 1. Compass Icon */
+#compass-panel h3::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23edb75c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolygon points='16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76'/%3E%3C/svg%3E");
+}
+
+/* 2. Wave / Signal Icon */
+#presence-panel h3::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23edb75c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Cpath d='M2 12h4l2-3 4 6 2-3h4'/%3E%3C/svg%3E");
+}
+
+/* 3. Network / Nodes Icon */
+#impact-panel h3::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23edb75c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Ccircle cx='18' cy='5' r='3'/%3E%3Ccircle cx='6' cy='12' r='3'/%3E%3Ccircle cx='18' cy='19' r='3'/%3E%3Cline x1='8.59' y1='13.51' x2='15.42' y2='17.49'/%3E%3Cline x1='15.41' y1='6.51' x2='8.59' y2='10.49'/%3E%3C/svg%3E");
+}
+
 .panel-fit {
   color: var(--primary);
   font-weight: 700;
 }
 
+/* =====================================================================
+   Services Grid (Step 9)
+   ===================================================================== */
 .service-block {
-  padding: 28px;
+  position: relative;
+  padding: 42px 38px;
   background: var(--white);
   box-shadow: var(--shadow-soft);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  transition: transform 400ms ease, box-shadow 400ms ease;
+  overflow: hidden;
 }
 
+.service-block:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-deep);
+}
+
+/* Golden detail inspired by the logo */
+.service-block::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--accent);
+  border-end-start-radius: var(--radius-sm);
+  transition: width 400ms ease;
+}
+
+.service-block:hover::before {
+  width: 120px;
+}
+
+.service-block > span {
+  display: block;
+  margin-block-end: 18px;
+  color: var(--accent);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.service-block h3 {
+  color: var(--primary-dark);
+  font-size: 1.6rem;
+  margin-block-end: 14px;
+}
+
+.service-block p {
+  color: var(--secondary);
+  margin-block-end: 24px;
+}
+
+.service-block ul {
+  display: grid;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.service-block li {
+  position: relative;
+  padding-inline-start: 24px;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.service-block li::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 0.6em;
+  inset-inline-start: 0;
+  width: 12px;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* =====================================================================
+   Final CTA (Step 10)
+   ===================================================================== */
+.final-cta {
+  position: relative;
+  text-align: center;
+  padding-block: 100px 120px;
+  background: var(--primary-dark);
+  z-index: 1;
+}
+
+/* Big faint abstract logo/shape in background */
+.final-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("assets/images/wasl.jpg");
+  background-size: 600px;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.04;
+  mix-blend-mode: luminosity;
+  z-index: -1;
+}
+
+/* Golden path ending at the button */
+.final-cta::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(180deg, transparent, var(--accent));
+  z-index: -1;
+}
+
+.final-cta .hero-actions {
+  justify-content: center;
+  margin-block-start: 40px;
+}
+
+.final-cta h2 {
+  margin-inline: auto;
+}
+
+.final-cta p:not(.eyebrow) {
+  margin-inline: auto;
+}
+
+/* =====================================================================
+   Footer (Step 10)
+   ===================================================================== */
 .site-footer {
-  padding-block: 48px;
+  padding-block: 64px 32px;
   color: var(--muted);
   background: var(--ink);
+  font-size: 0.95rem;
+}
+
+.site-footer a {
+  transition: color 200ms ease;
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  color: var(--white);
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-style: normal;
+}
+
+.copyright {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-block-start: 48px !important;
+  padding-block-start: 24px;
+  border-block-start: 1px solid rgba(252, 252, 253, 0.1);
+  color: rgba(252, 252, 253, 0.5);
 }

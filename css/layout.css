@@ -88,5 +88,7 @@
 
 .footer-layout {
   display: grid;
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  align-items: start;
 }

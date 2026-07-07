@@ -139,6 +139,7 @@
 }
 
 .system-tab {
+  position: relative;
   width: 100%;
   padding: 16px 18px;
   border: 1px solid var(--line);
@@ -147,12 +148,31 @@
   background: var(--white);
   text-align: start;
   font-weight: 700;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.system-tab::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: 4px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 300ms ease;
+  z-index: 2;
 }
 
 .system-tab.is-active {
   color: var(--primary);
   border-color: var(--gold-line);
   background: var(--soft);
+}
+
+.system-tab.is-active::before {
+  transform: scaleY(1);
 }
 
 .footer-brand,
