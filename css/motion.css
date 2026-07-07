@@ -1,0 +1,111 @@
+/* =====================================================================
+   وصل لنمو الأعمال — motion.css
+   التفاعلات والحركة 
+   ===================================================================== */
+
+/* 1. Reveal on Scroll */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggering for specific lists */
+.services-grid > [data-reveal] {
+  transition-delay: calc(var(--item-index, 0) * 100ms);
+}
+.services-grid > :nth-child(1) { --item-index: 1; }
+.services-grid > :nth-child(2) { --item-index: 2; }
+.services-grid > :nth-child(3) { --item-index: 3; }
+.services-grid > :nth-child(4) { --item-index: 4; }
+.services-grid > :nth-child(5) { --item-index: 5; }
+
+.journey-step[data-reveal] {
+  transition-delay: 150ms;
+}
+
+/* 2. Timeline Interactions (رحلتك مع وصل) */
+.journey-step {
+  transition: background-color 400ms ease, border-color 400ms ease, transform 400ms ease, box-shadow 400ms ease;
+}
+
+.journey-step.is-active {
+  background: rgba(252, 252, 253, 0.12);
+  border-color: rgba(237, 183, 92, 0.4);
+  transform: translateX(-8px);
+  box-shadow: -12px 12px 30px rgba(0, 16, 66, 0.3);
+}
+
+.journey-step.is-active::before {
+  background: var(--accent);
+  box-shadow: 0 0 16px rgba(237, 183, 92, 0.6);
+  border-color: var(--white);
+}
+
+.journey-step.is-active .step-number {
+  color: var(--white);
+  text-shadow: 0 0 12px rgba(237, 183, 92, 0.5);
+}
+
+/* 3. Tabs Interactions (منظومة وصل) */
+.system-panel {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+
+.system-panel.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.system-tab {
+  transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease;
+}
+
+/* 4. Mobile Menu Toggle Animation */
+.menu-toggle span {
+  transition: transform 300ms ease, opacity 300ms ease;
+  transform-origin: center;
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Mobile Nav Transition */
+.site-nav {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 300ms ease, transform 300ms ease, visibility 300ms ease;
+}
+
+.site-nav.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (min-width: 901px) {
+  .site-nav {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: none;
+  }
+}

@@ -447,31 +447,75 @@
   display: none;
 }
 
-.journey-step,
-.service-block,
-.system-panel {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
+/* =====================================================================
+   Journey Timeline (Step 7)
+   ===================================================================== */
+.journey-timeline {
+  position: relative;
+  display: grid;
+  gap: 32px;
+  padding-inline-start: 24px;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+/* The Golden Line */
+.journey-timeline::before {
+  content: "";
+  position: absolute;
+  inset-block: 20px;
+  inset-inline-start: 0;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, var(--accent) 15%, var(--accent) 85%, transparent);
+  opacity: 0.3;
 }
 
 .journey-step {
-  padding: 28px;
-  background: rgba(252, 252, 253, 0.06);
-  border-color: rgba(252, 252, 253, 0.14);
+  position: relative;
+  padding: 32px;
+  background: rgba(252, 252, 253, 0.04);
+  border: 1px solid rgba(252, 252, 253, 0.1);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(10px);
 }
 
-.step-number,
-.service-block > span {
-  display: inline-flex;
+/* The Node on the Golden Line */
+.journey-step::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 42px;
+  inset-inline-start: -29px; /* Align with the timeline line */
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--primary-dark);
+  border: 2px solid rgba(237, 183, 92, 0.5);
+  transition: all 400ms ease;
+  z-index: 2;
+}
+
+.step-number {
+  display: inline-block;
   margin-block-end: 18px;
   color: var(--accent);
+  font-size: 1.25rem;
   font-weight: 700;
+  letter-spacing: 2px;
+  opacity: 0.8;
 }
 
-.step-intro,
-.step-note {
+.step-intro {
   color: var(--white) !important;
+  font-size: 1.35rem !important;
   font-weight: 700;
+  margin-block-end: 12px;
+}
+
+.step-note {
+  color: var(--accent) !important;
+  font-weight: 600;
+  margin-block-start: 20px;
+  font-size: 0.95rem;
 }
 
 .system-panel {
