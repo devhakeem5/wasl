@@ -1,0 +1,151 @@
+.hero {
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  padding-block: 120px 80px;
+}
+
+.hero-content > p:not(.eyebrow),
+.final-cta p:not(.eyebrow) {
+  max-width: 680px;
+  font-size: 1.12rem;
+}
+
+.hero-lead {
+  color: var(--white) !important;
+  font-size: clamp(1.35rem, 2.4vw, 2rem) !important;
+  font-weight: 700;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-block-start: 32px;
+}
+
+.hero-mark {
+  display: grid;
+  gap: 22px;
+  justify-items: center;
+}
+
+.hero-mark img {
+  width: min(100%, 420px);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-deep);
+}
+
+.path-words {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.path-words span {
+  padding: 8px 12px;
+  border: 1px solid var(--gold-line);
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+}
+
+.promise {
+  padding-block: clamp(48px, 7vw, 86px);
+  color: var(--ink);
+  background: var(--white);
+}
+
+.promise-content p {
+  max-width: 980px;
+  margin: 0;
+  font-size: clamp(1.6rem, 3.5vw, 3.3rem);
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.promise strong {
+  color: var(--primary);
+}
+
+.story-body,
+.system-panel,
+.service-block {
+  line-height: 1.9;
+}
+
+.story-quotes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-block-end: 34px;
+}
+
+.story-quotes blockquote {
+  margin: 0;
+  padding: 22px;
+  border-inline-start: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  color: var(--primary);
+  background: var(--soft);
+  font-weight: 700;
+}
+
+.story-body {
+  max-width: 860px;
+}
+
+.story-closing {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.journey-step,
+.service-block,
+.system-panel {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.journey-step {
+  padding: 28px;
+  background: rgba(252, 252, 253, 0.06);
+  border-color: rgba(252, 252, 253, 0.14);
+}
+
+.step-number,
+.service-block > span {
+  display: inline-flex;
+  margin-block-end: 18px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.step-intro,
+.step-note {
+  color: var(--white) !important;
+  font-weight: 700;
+}
+
+.system-panel {
+  padding: 30px;
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+}
+
+.panel-fit {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.service-block {
+  padding: 28px;
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+}
+
+.site-footer {
+  padding-block: 48px;
+  color: var(--muted);
+  background: var(--ink);
+}
