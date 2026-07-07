@@ -27,6 +27,20 @@
   .story-quotes {
     grid-template-columns: 1fr;
   }
+
+  .hero-mark {
+    min-height: auto;
+  }
+
+  .hero-orbit {
+    width: min(100%, 500px);
+  }
+
+  .hero-proof {
+    position: relative;
+    inset: auto;
+    margin-block-start: 18px;
+  }
 }
 
 @media (max-width: 560px) {
@@ -52,6 +66,39 @@
     padding-block-start: 112px;
   }
 
+  .hero-orbit {
+    width: min(100%, 360px);
+  }
+
+  .hero-logo {
+    width: 58%;
+    border-radius: var(--radius-sm);
+  }
+
+  .golden-path-shadow {
+    stroke-width: 9;
+  }
+
+  .golden-path-line {
+    stroke-width: 3;
+  }
+
+  .path-word {
+    min-width: auto;
+    padding: 7px 9px;
+    font-size: 0.76rem;
+  }
+
+  .path-word::before {
+    width: 7px;
+    height: 7px;
+    box-shadow: 0 0 0 5px rgba(237, 183, 92, 0.14);
+  }
+
+  .hero-proof {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .button,
   .hero-actions {
     width: 100%;
@@ -66,5 +113,14 @@
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .golden-path-line {
+    stroke-dashoffset: 0;
+  }
+
+  .path-word {
+    opacity: 1;
+    transform: none;
   }
 }
