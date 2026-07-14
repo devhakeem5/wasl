@@ -40,27 +40,17 @@
   }
 
   /* Story */
-  .story-part {
-    min-height: 60vh;
-    padding-block: 60px;
+  .story-progress {
+    padding: 0 16px;
+    height: 64px;
   }
 
-  .story-node {
-    right: auto;
-    left: 24px;
-    transform: translateY(-50%);
+  .story-tab {
+    padding: 8px 12px;
   }
 
-  .story-line-track {
-    right: auto;
-    left: 24px;
-    transform: translateX(-50%);
-  }
-
-  .story-part-inner {
-    margin-inline-start: 48px;
-    margin-inline-end: auto;
-    max-width: none;
+  .story-tab-label {
+    font-size: 0.72rem;
   }
 
   /* Journey */
@@ -164,25 +154,20 @@
   }
 
   /* Story */
-  .story-part {
-    min-height: auto;
-    padding-block: 48px;
-  }
-
-  .story-part-inner {
-    padding-inline-start: 20px;
+  .story-slide {
+    padding: 22px 20px;
   }
 
   .story-neg-quote {
-    padding: 14px 16px;
+    padding: 12px 16px;
   }
 
-  .story-questions-block {
-    padding: 16px;
+  .story-faith-q {
+    padding: 12px 16px;
   }
 
-  .story-closing-card {
-    padding: 18px 22px;
+  .story-nav {
+    padding: 14px 20px;
   }
 
   /* Journey */
@@ -246,9 +231,7 @@
     stroke-dashoffset: 0;
   }
 
-  .story-line-main {
-    stroke-dashoffset: 0;
-  }
+
 
   .journey-path-line {
     stroke-dashoffset: 0;
@@ -263,16 +246,7 @@
     transform: none;
   }
 
-  .story-part {
-    opacity: 1;
-  }
-
-  .story-part .story-part-body p,
-  .story-neg-quote,
-  .story-turn,
-  .story-highlight,
-  .story-question,
-  .story-closing-card {
+  .story-slide {
     opacity: 1;
     transform: none;
   }

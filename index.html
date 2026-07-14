@@ -45,7 +45,7 @@
           <a href="#story">قصتنا</a>
           <a href="#journey">رحلتك مع وصل</a>
           <a href="#system">منظومة وصل</a>
-          <a href="#services">خدماتنا</a>
+          <a href="services.html">خدماتنا</a>
           <a class="nav-cta" href="#start">ابدأ رحلتك</a>
         </nav>
       </div>
@@ -128,101 +128,79 @@
         </div>
       </section>
 
-      <!-- ═══════════════════════════════════════════════════════════
-           القسم الثاني — القصة: ثلاث لحظات
-           ═══════════════════════════════════════════════════════════ -->
-      <section class="story section-light" id="story" aria-labelledby="story-title">
+      <section class="story-cinema" id="story" aria-labelledby="story-title">
         <h2 id="story-title" class="sr-only">قصتنا</h2>
 
-        <!-- Story connecting line -->
-        <div class="story-line-track" aria-hidden="true">
-          <svg class="story-line-svg" viewBox="0 0 4 100" preserveAspectRatio="none">
-            <line class="story-line-glow" x1="2" y1="0" x2="2" y2="100" />
-            <line class="story-line-main" x1="2" y1="0" x2="2" y2="100" data-story-line />
-          </svg>
+        <!-- Ambient background -->
+        <div class="story-ambient" aria-hidden="true">
+          <div class="story-ambient-orb story-orb-1"></div>
+          <div class="story-ambient-orb story-orb-2"></div>
         </div>
 
-        <!-- Part 1: البداية -->
-        <article class="story-part" data-story-part="1">
-          <div class="story-node" aria-hidden="true">
-            <div class="story-node-dot"></div>
-          </div>
-          <div class="container story-part-inner">
-            <div class="story-part-header">
-              <span class="story-part-num">01</span>
-              <h3 class="story-part-title">البداية</h3>
-            </div>
-            <div class="story-part-body">
-              <p class="story-part-intro">
-                في زوايا الجامعة، بين مقاعد الدراسة وأحاديث الممرات، كان هناك صوت
-                يتكرر…
-              </p>
-              <div class="story-quotes-grid">
-                <blockquote class="story-neg-quote" data-story-quote>
-                  <span>هذا التخصص لن يصنع فرقًا.</span>
-                </blockquote>
-                <blockquote class="story-neg-quote" data-story-quote>
-                  <span>مجالكم مجرد أدوات.</span>
-                </blockquote>
-                <blockquote class="story-neg-quote" data-story-quote>
-                  <span>لا مستقبل حقيقي لما تفعلون.</span>
-                </blockquote>
-              </div>
-              <p class="story-turn">لكننا كنا نرى شيئًا مختلفًا.</p>
-            </div>
-          </div>
-        </article>
+        <!-- Side dots navigation -->
+        <nav class="story-dots" aria-label="أجزاء القصة">
+          <button class="story-dot is-active" data-story-go="0" aria-label="البداية">
+            <span class="story-dot-ring"></span>
+          </button>
+          <button class="story-dot" data-story-go="1" aria-label="الرؤية">
+            <span class="story-dot-ring"></span>
+          </button>
+          <button class="story-dot" data-story-go="2" aria-label="الإيمان">
+            <span class="story-dot-ring"></span>
+          </button>
+        </nav>
 
-        <!-- Part 2: الرؤية -->
-        <article class="story-part" data-story-part="2">
-          <div class="story-node" aria-hidden="true">
-            <div class="story-node-dot"></div>
-          </div>
-          <div class="container story-part-inner">
-            <div class="story-part-header">
-              <span class="story-part-num">02</span>
-              <h3 class="story-part-title">الرؤية</h3>
-            </div>
-            <div class="story-part-body">
-              <p>
-                كنا نرى أن وراء كل فكرة قصة، وأن وراء كل مشروع قيمة، وأن المشكلة
-                لم تكن يومًا في الإمكانيات، بل في الطريقة التي يرى بها العالم هذه
-                الإمكانيات.
-              </p>
-              <p class="story-highlight" data-story-highlight>
-                من تلك اللحظة وُلدت فكرة وصل. فكرة تؤمن أن الأشياء العظيمة لا
-                تختفي لأنها ضعيفة، بل لأنها لم تجد الطريقة الصحيحة لتصل.
-              </p>
-            </div>
-          </div>
-        </article>
+        <!-- Scenes -->
+        <div class="story-stage" data-story-stage>
 
-        <!-- Part 3: الإيمان -->
-        <article class="story-part" data-story-part="3">
-          <div class="story-node" aria-hidden="true">
-            <div class="story-node-dot"></div>
-          </div>
-          <div class="container story-part-inner">
-            <div class="story-part-header">
-              <span class="story-part-num">03</span>
-              <h3 class="story-part-title">الإيمان</h3>
-            </div>
-            <div class="story-part-body">
-              <div class="story-questions-block">
-                <span class="story-question" data-story-q>كيف تتحول الفكرة إلى رسالة؟</span>
-                <span class="story-question" data-story-q>كيف تتحول الرسالة إلى تجربة؟</span>
-                <span class="story-question" data-story-q>كيف تتحول التجربة إلى أثر يبقى؟</span>
+          <!-- Scene 1: البداية -->
+          <div class="story-scene is-active" data-story-scene="0">
+            <div class="story-scene-inner">
+              <p class="story-whisper">في زوايا الجامعة، بين مقاعد الدراسة وأحاديث الممرات…</p>
+              <p class="story-whisper story-whisper-delay-1">كان هناك صوت يتكرر:</p>
+
+              <div class="story-strikes">
+                <p class="story-strike" data-strike>هذا التخصص لن يصنع فرقًا.</p>
+                <p class="story-strike" data-strike>مجالكم مجرد أدوات.</p>
+                <p class="story-strike" data-strike>لا مستقبل حقيقي لما تفعلون.</p>
               </div>
-              <p>
-                لم نؤسس وصل لنقدم خدمات فقط. أسسناها لأننا نؤمن أن لكل مشروع قيمة
-                تستحق أن تُرى، ولكل فكرة طريقًا يستحق أن يُبنى.
-              </p>
-              <div class="story-closing-card">
-                <p>ومن هنا بدأت وصل… رحلة صناعة الأثر.</p>
-              </div>
+
+              <p class="story-golden-moment">لكننا كنا نرى شيئًا مختلفًا.</p>
             </div>
           </div>
-        </article>
+
+          <!-- Scene 2: الرؤية -->
+          <div class="story-scene" data-story-scene="1">
+            <div class="story-scene-inner">
+              <p class="story-whisper">كنا نرى أن وراء كل فكرة قصة،</p>
+              <p class="story-whisper story-whisper-delay-1">وأن وراء كل مشروع قيمة،</p>
+              <p class="story-whisper story-whisper-delay-2">وأن المشكلة لم تكن يومًا في الإمكانيات…</p>
+              <p class="story-whisper story-whisper-delay-3 story-emphasis">بل في الطريقة التي يرى بها العالم هذه الإمكانيات.</p>
+
+              <div class="story-birth">
+                <p class="story-golden-moment">من تلك اللحظة وُلدت فكرة وصل.</p>
+                <p class="story-glow-text">فكرة تؤمن أن الأشياء العظيمة لا تختفي لأنها ضعيفة، بل لأنها لم تجد الطريقة الصحيحة لتصل.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scene 3: الإيمان -->
+          <div class="story-scene" data-story-scene="2">
+            <div class="story-scene-inner">
+              <p class="story-question-line"><span class="q-text">كيف تتحول الفكرة إلى رسالة؟</span></p>
+              <p class="story-question-line"><span class="q-text">كيف تتحول الرسالة إلى تجربة؟</span></p>
+              <p class="story-question-line"><span class="q-text">كيف تتحول التجربة إلى أثر يبقى؟</span></p>
+
+              <p class="story-whisper story-whisper-delay-2">لم نؤسس وصل لنقدم خدمات فقط. أسسناها لأننا نؤمن أن لكل مشروع قيمة تستحق أن تُرى.</p>
+
+              <p class="story-finale">ومن هنا بدأت وصل… رحلة صناعة الأثر.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Subtle section label -->
+        <span class="story-section-label" aria-hidden="true">قصتنا</span>
       </section>
 
       <!-- ═══════════════════════════════════════════════════════════
@@ -420,6 +398,11 @@
           <div class="section-heading" data-reveal>
             <p class="eyebrow">خدماتنا</p>
             <h2 id="services-title">حلول تسويقية لعلامتك، متكاملة أو منفصلة حسب احتياجك.</h2>
+            <div style="margin-top: 2rem; text-align: center;">
+              <a href="services.html" class="primary-btn" style="background: var(--accent); color: #000; padding: 12px 32px; border-radius: 30px; text-decoration: none; font-weight: 700; display: inline-block; transition: transform 0.3s ease;">
+                اكتشف إبداع خدماتنا بالكامل
+              </a>
+            </div>
           </div>
 
           <div class="services-tree" data-services-tree>

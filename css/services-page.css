@@ -1,0 +1,399 @@
+/* ==========================================================================
+   SERVICES PAGE - EXTRAORDINARY CINEMATIC EXPERIENCE
+   ========================================================================== */
+
+/* Page Setup */
+html, body.services-page {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; 
+  background-color: var(--bg-dark, #060e1f);
+  color: var(--white, #fcfcfd);
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  scroll-behavior: smooth;
+}
+
+.services-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.services-container::-webkit-scrollbar { display: none; }
+
+/* ─── Global Film Grain ─── */
+.film-grain {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  animation: grain-dance 0.2s steps(2) infinite;
+}
+@keyframes grain-dance {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-2%, -2%); }
+}
+
+/* ─── Base Scene Setup ─── */
+.service-scene {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ─── Giant Watermark Numbers ─── */
+.watermark-num {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50vw;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.02);
+  z-index: 0;
+  pointer-events: none;
+  line-height: 1;
+  transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+/* We'll move it via JS based on scroll/parallax, but give it a subtle float here */
+.service-scene.is-active .watermark-num {
+  animation: float-watermark 10s ease-in-out infinite alternate;
+}
+@keyframes float-watermark {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  100% { transform: translate(-48%, -52%) scale(1.05); }
+}
+
+/* ─── Background Visual Container ─── */
+.scene-visuals {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* ─── Content Container & Difference Blend ─── */
+.scene-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 5%;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content-wrapper {
+  max-width: 600px;
+  pointer-events: auto;
+}
+/* Magic interaction: text absorbs background light */
+.difference-blend {
+  mix-blend-mode: difference;
+}
+
+/* ─── Typography & 3D Spring Word Animation ─── */
+.scene-title {
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--white);
+}
+
+.scene-desc {
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 400;
+}
+
+/* Hidden state for JS split words */
+.s-word {
+  display: inline-block;
+  opacity: 0;
+  will-change: transform, opacity, filter;
+}
+
+/* The aggressive 3D Spring Blur reveal */
+.service-scene.is-active .scene-title .s-word {
+  animation: word-spring-blur 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+  animation-delay: calc(var(--wi, 0) * 100ms + 200ms);
+}
+.service-scene.is-active .scene-desc .s-word {
+  animation: word-spring-blur 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: calc(var(--wi, 0) * 40ms + 800ms);
+}
+
+@keyframes word-spring-blur {
+  0% { 
+    opacity: 0; 
+    transform: translateY(80px) translateZ(-200px) rotateX(45deg); 
+    filter: blur(15px); 
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-10px) translateZ(0) rotateX(-10deg);
+    filter: blur(0px);
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0) translateZ(0) rotateX(0); 
+    filter: blur(0px); 
+  }
+}
+
+
+/* ─── Orbital Constellation Tags (Glassmorphism) ─── */
+.constellation-tags {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  pointer-events: auto;
+  perspective: 1000px;
+}
+/* On mobile, stack them instead */
+@media (max-width: 900px) {
+  .scene-content { flex-direction: column; align-items: flex-start; gap: 40px; justify-content: center; }
+  .constellation-tags { width: 100%; height: auto; }
+  .orbit-center { position: relative !important; top: 0 !important; left: 0 !important; transform: none !important; animation: none !important; display: flex; flex-wrap: wrap; gap: 10px; }
+  .glass-tag { position: relative !important; transform: none !important; opacity: 0; animation: fade-in-up 1s forwards; animation-delay: calc(var(--index, 1) * 200ms + 1s); }
+}
+
+.orbit-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 2px; height: 2px;
+  transform-style: preserve-3d;
+  /* Rotate the whole galaxy slowly */
+  animation: galaxy-rotate 60s linear infinite;
+}
+
+@keyframes galaxy-rotate {
+  0% { transform: rotateY(0deg) rotateZ(10deg); }
+  100% { transform: rotateY(-360deg) rotateZ(10deg); }
+}
+
+/* Stop galaxy on hover of any tag */
+.constellation-tags:hover .orbit-center {
+  animation-play-state: paused;
+}
+
+.glass-tag {
+  position: absolute;
+  top: 50%; left: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 14px 28px;
+  border-radius: 40px;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--white);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(255,255,255,0.05);
+  cursor: pointer;
+  white-space: nowrap;
+  
+  /* Initial state hidden */
+  opacity: 0;
+  transform-origin: center;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Reveal tags when scene is active */
+.service-scene.is-active .glass-tag {
+  animation: tag-reveal 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: calc(var(--index, 1) * 150ms + 1.2s);
+}
+
+@keyframes tag-reveal {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0) rotateY(var(--inv-ry)); }
+  100% { opacity: 1; transform: translate(-50%, -50%) rotateY(var(--ry)) translateZ(var(--tz)) rotateY(calc(-1 * var(--ry))); }
+}
+
+/* Hover effect on Tag */
+.glass-tag:hover {
+  background: rgba(237, 183, 92, 0.2) !important;
+  border-color: rgba(237, 183, 92, 0.8) !important;
+  box-shadow: 0 0 30px rgba(237, 183, 92, 0.4), inset 0 0 15px rgba(237, 183, 92, 0.5) !important;
+  text-shadow: 0 0 10px rgba(255,255,255,0.8);
+  /* The transform needs to stay consistent with its 3D position but scale up */
+  transform: translate(-50%, -50%) rotateY(var(--ry)) translateZ(var(--tz)) rotateY(calc(-1 * var(--ry))) scale(1.15) !important;
+  z-index: 100;
+}
+
+/* JS will assign --ry (angle) and --tz (radius) to each tag dynamically, 
+   but for CSS fallback/initial values if JS fails: */
+.tag-orbit-1 { --ry: 0deg;   --tz: 180px; --index: 1; }
+.tag-orbit-2 { --ry: 72deg;  --tz: 200px; --index: 2; }
+.tag-orbit-3 { --ry: 144deg; --tz: 160px; --index: 3; }
+.tag-orbit-4 { --ry: 216deg; --tz: 220px; --index: 4; }
+.tag-orbit-5 { --ry: 288deg; --tz: 190px; --index: 5; }
+.tag-orbit-6 { --ry: 320deg; --tz: 210px; --index: 6; }
+
+
+/* ==========================================================================
+   EXTRAORDINARY CSS VISUALS PER SCENE
+   ========================================================================== */
+
+/* ─── Scene 01: Advanced SVG Compass ─── */
+.visual-compass {
+  position: absolute;
+  width: 800px; height: 800px;
+  left: 10%;
+  opacity: 0;
+  transform: scale(0.6) rotate(-90deg);
+  transition: all 2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.service-scene.is-active .visual-compass {
+  opacity: 1; transform: scale(1) rotate(0);
+}
+.compass-svg { width: 100%; height: 100%; }
+.c-ring { fill: none; stroke-width: 1; transform-origin: center; }
+.outer-dash { stroke: rgba(237, 183, 92, 0.3); stroke-dasharray: 4 8; animation: r-slow 60s linear infinite; }
+.middle-solid { stroke: rgba(237, 183, 92, 0.15); stroke-width: 2; animation: r-slow-rev 40s linear infinite; }
+.inner-glow { stroke: var(--accent); stroke-width: 4; filter: drop-shadow(0 0 10px var(--accent)); animation: pulse-ring 4s infinite alternate; }
+.c-pointer-group { transform-origin: center; animation: c-point 6s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate; }
+.c-pointer-top { fill: var(--accent); opacity: 0.8; filter: drop-shadow(0 0 15px var(--accent)); }
+.c-pointer-bottom { fill: rgba(255,255,255,0.2); }
+
+@keyframes r-slow { 100% { transform: rotate(360deg); } }
+@keyframes r-slow-rev { 100% { transform: rotate(-360deg); } }
+@keyframes c-point { 0% { transform: rotate(-25deg); } 100% { transform: rotate(45deg); } }
+@keyframes pulse-ring { 0% { opacity: 0.4; stroke-width: 2; } 100% { opacity: 1; stroke-width: 6; } }
+
+/* ─── Scene 02: Liquid Glass Identity ─── */
+.visual-identity {
+  position: absolute;
+  width: 100vw; height: 100vh;
+  /* Apply SVG Liquid Filter */
+  filter: url(#liquid-filter);
+  opacity: 0; transition: opacity 2s ease;
+}
+.service-scene.is-active .visual-identity { opacity: 1; }
+
+.visual-identity .blob {
+  position: absolute;
+  border-radius: 50%;
+  /* Removed mix-blend-mode screen to allow liquid filter to merge them like goo */
+}
+.blob-1 { width: 600px; height: 600px; background: #ff3366; top: -10%; left: 10%; animation: blob-float 15s infinite alternate cubic-bezier(0.4, 0, 0.2, 1); }
+.blob-2 { width: 700px; height: 700px; background: #33ccff; bottom: -20%; right: 10%; animation: blob-float 20s infinite alternate-reverse cubic-bezier(0.4, 0, 0.2, 1); }
+.blob-3 { width: 500px; height: 500px; background: #edb75c; top: 30%; left: 40%; animation: blob-float 12s infinite alternate cubic-bezier(0.4, 0, 0.2, 1); }
+
+@keyframes blob-float {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50% { transform: translate(200px, 100px) scale(1.3) rotate(180deg); }
+  100% { transform: translate(-100px, 200px) scale(0.9) rotate(360deg); }
+}
+
+/* ─── Scene 03: SVG Sound Waves ─── */
+.visual-story {
+  position: absolute; width: 150vw; height: 60vh;
+  top: 20vh; left: -25vw;
+  opacity: 0; transform: translateY(100px);
+  transition: all 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.service-scene.is-active .visual-story { opacity: 1; transform: translateY(0); }
+.sound-wave-svg { width: 100%; height: 100%; }
+.s-wave { fill: none; stroke-linecap: round; }
+.s-wave-1 { stroke: rgba(237, 183, 92, 0.8); stroke-width: 4; filter: drop-shadow(0 0 10px var(--accent)); animation: sw-move 8s linear infinite; }
+.s-wave-2 { stroke: rgba(255, 255, 255, 0.3); stroke-width: 2; animation: sw-move 6s linear infinite reverse; }
+.s-wave-3 { stroke: rgba(51, 204, 255, 0.4); stroke-width: 8; filter: blur(4px); animation: sw-move 12s linear infinite; }
+
+@keyframes sw-move { 100% { transform: translateX(-400px); } }
+
+/* ─── Scene 04: Epic Pulse ─── */
+.visual-message {
+  position: absolute; right: 15%; top: 50%; transform: translateY(-50%);
+  width: 400px; height: 400px;
+}
+.pulse-ring {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  opacity: 0;
+}
+.service-scene.is-active .pulse-ring { animation: epic-pulse 6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; }
+.pulse-1 { animation-delay: 0s !important; }
+.pulse-2 { animation-delay: 2s !important; }
+.pulse-3 { animation-delay: 4s !important; }
+
+@keyframes epic-pulse {
+  0% { width: 0; height: 0; opacity: 1; border-width: 6px; box-shadow: inset 0 0 50px var(--accent); }
+  100% { width: 1500px; height: 1500px; opacity: 0; border-width: 1px; box-shadow: inset 0 0 0 var(--accent); }
+}
+.pulse-core {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 20px; height: 20px; background: var(--white); border-radius: 50%;
+  box-shadow: 0 0 40px 20px var(--accent);
+  animation: core-beat 2s infinite alternate;
+}
+@keyframes core-beat { 0% { transform: translate(-50%, -50%) scale(0.8); } 100% { transform: translate(-50%, -50%) scale(1.5); } }
+
+/* ─── Scene 05: Cyber Grid ─── */
+.visual-impact {
+  position: absolute; bottom: 0; left: 0; width: 100vw; height: 80vh;
+  perspective: 1200px; opacity: 0; transform: translateY(200px);
+  transition: all 2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.service-scene.is-active .visual-impact { opacity: 1; transform: translateY(0); }
+
+.cyber-grid {
+  position: absolute; bottom: -50%; left: -50%; width: 200%; height: 200%;
+  background-image: 
+    linear-gradient(rgba(237, 183, 92, 0.3) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(237, 183, 92, 0.3) 2px, transparent 2px);
+  background-size: 80px 80px;
+  transform: rotateX(75deg); transform-origin: top center;
+  animation: cyber-move 4s linear infinite;
+}
+@keyframes cyber-move { 0% { background-position: 0 0; } 100% { background-position: 0 80px; } }
+
+.cyber-light {
+  position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at center bottom, rgba(237, 183, 92, 0.4) 0%, transparent 60%);
+  filter: blur(40px); mix-blend-mode: screen;
+}
+
+
+/* ─── Side Navigation ─── */
+.services-nav {
+  position: fixed; left: 40px; top: 50%; transform: translateY(-50%);
+  z-index: 100; display: flex; flex-direction: column; align-items: center;
+}
+.services-nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 25px; position: relative; z-index: 2; }
+.services-nav button {
+  background: none; border: none; color: rgba(255, 255, 255, 0.2);
+  font-family: inherit; font-size: 1.2rem; font-weight: 700;
+  cursor: pointer; transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); padding: 5px;
+}
+.services-nav button.active { color: var(--accent); transform: scale(1.4); text-shadow: 0 0 15px rgba(237, 183, 92, 0.5); }
+.services-nav button:hover { color: #fff; }
+
+.services-progress {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 2px; height: 100%; background: rgba(255, 255, 255, 0.05); z-index: 1;
+}
+.services-progress::after {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: var(--progress, 0%);
+  background: linear-gradient(to bottom, var(--accent), #fff);
+  transition: height 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 0 10px var(--accent);
+}

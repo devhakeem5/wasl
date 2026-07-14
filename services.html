@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="خدمات وصل لنمو الأعمال - إبداع، استراتيجية، هوية، محتوى، تسويق رقمي." />
+    <title>خدماتنا | وصل لنمو الأعمال</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/services-page.css" />
+  </head>
+  <body class="services-page">
+    
+    <!-- SVG Filters for advanced visual effects -->
+    <svg style="width:0;height:0;position:absolute;" aria-hidden="true">
+      <defs>
+        <filter id="liquid-filter">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 30 -10" result="liquid" />
+          <feBlend in="SourceGraphic" in2="liquid" />
+        </filter>
+        <filter id="noise-filter">
+          <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" stitchTiles="stitch"/>
+          <feColorMatrix type="matrix" values="1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 0.15 0" />
+        </filter>
+      </defs>
+    </svg>
+
+    <!-- Global Film Grain Overlay -->
+    <div class="film-grain" aria-hidden="true"></div>
+
+    <!-- Header -->
+    <header class="site-header" data-header>
+      <div class="container header-layout">
+        <a class="brand" href="index.html" aria-label="وصل لنمو الأعمال - العودة للرئيسية">
+          <img src="assets/images/wasl.jpg" alt="شعار وصل لنمو الأعمال" />
+          <span>وصل لنمو الأعمال</span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="فتح القائمة"
+          aria-controls="site-nav"
+          aria-expanded="false"
+          data-menu-toggle
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="التنقل الرئيسي" data-site-nav>
+          <a href="index.html#home">البداية</a>
+          <a href="index.html#story">قصتنا</a>
+          <a href="index.html#journey">رحلتك مع وصل</a>
+          <a href="index.html#system">منظومة وصل</a>
+          <a href="services.html" class="active">خدماتنا</a>
+          <a class="nav-cta" href="index.html#start">ابدأ رحلتك</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Side Navigation for Services -->
+    <nav class="services-nav">
+      <ul>
+        <li><button data-goto="0" class="active">01</button></li>
+        <li><button data-goto="1">02</button></li>
+        <li><button data-goto="2">03</button></li>
+        <li><button data-goto="3">04</button></li>
+        <li><button data-goto="4">05</button></li>
+      </ul>
+      <div class="services-progress"></div>
+    </nav>
+
+    <main class="services-container">
+      
+      <!-- Scene 01: نعرف الاتجاه -->
+      <section class="service-scene scene-01" id="scene-01">
+        <div class="watermark-num">01</div>
+        <div class="scene-visuals">
+          <div class="visual-compass">
+            <!-- Advanced Compass SVG -->
+            <svg viewBox="0 0 400 400" class="compass-svg">
+              <circle cx="200" cy="200" r="190" class="c-ring outer-dash" />
+              <circle cx="200" cy="200" r="140" class="c-ring middle-solid" />
+              <circle cx="200" cy="200" r="80" class="c-ring inner-glow" />
+              <g class="c-pointer-group">
+                <path d="M198 40 L202 40 L200 200 Z" class="c-pointer-top" />
+                <path d="M198 360 L202 360 L200 200 Z" class="c-pointer-bottom" />
+              </g>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="scene-content container">
+          <div class="content-wrapper difference-blend">
+            <h2 class="scene-title" data-split-words>نعرف الاتجاه</h2>
+            <p class="scene-desc" data-split-words>قبل أن تبدأ بالظهور… تحتاج أن تعرف إلى أين تتجه. نبني لك خارطة واضحة تساعد كل خطوة بعدها على أن تكون في الاتجاه الصحيح.</p>
+          </div>
+          <!-- Orbiting Constellation Tags -->
+          <div class="constellation-tags">
+            <div class="orbit-center">
+              <span class="glass-tag tag-orbit-1">تخطيط استراتيجي</span>
+              <span class="glass-tag tag-orbit-2">دراسة السوق</span>
+              <span class="glass-tag tag-orbit-3">تحديد الجمهور</span>
+              <span class="glass-tag tag-orbit-4">بناء الرسالة</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 02: نبني الهوية -->
+      <section class="service-scene scene-02" id="scene-02">
+        <div class="watermark-num">02</div>
+        <div class="scene-visuals">
+          <div class="visual-identity liquid-effect">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+          </div>
+        </div>
+        <div class="scene-content container">
+          <div class="content-wrapper difference-blend">
+            <h2 class="scene-title" data-split-words>نبني الهوية</h2>
+            <p class="scene-desc" data-split-words>عندما تتضح الفكرة… نمنحها شكلًا يُرى. نبني هوية بصرية تعكس جوهر مشروعك وتجعله قابلا للتذكر.</p>
+          </div>
+          <div class="constellation-tags">
+            <div class="orbit-center">
+              <span class="glass-tag tag-orbit-1">الشعار</span>
+              <span class="glass-tag tag-orbit-2">الألوان</span>
+              <span class="glass-tag tag-orbit-3">الخطوط</span>
+              <span class="glass-tag tag-orbit-4">أسلوب التواصل</span>
+              <span class="glass-tag tag-orbit-5">النظام البصري الكامل</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 03: نصنع القصة -->
+      <section class="service-scene scene-03" id="scene-03">
+        <div class="watermark-num">03</div>
+        <div class="scene-visuals">
+          <div class="visual-story">
+            <!-- SVG Sound Waves for a premium look -->
+            <svg viewBox="0 0 800 400" class="sound-wave-svg" preserveAspectRatio="none">
+              <path class="s-wave s-wave-1" d="M0,200 Q100,100 200,200 T400,200 T600,200 T800,200" />
+              <path class="s-wave s-wave-2" d="M0,200 Q100,300 200,200 T400,200 T600,200 T800,200" />
+              <path class="s-wave s-wave-3" d="M0,200 Q150,50 300,200 T600,200 T900,200" />
+            </svg>
+          </div>
+        </div>
+        <div class="scene-content container">
+          <div class="content-wrapper difference-blend">
+            <h2 class="scene-title" data-split-words>نصنع القصة</h2>
+            <p class="scene-desc" data-split-words>نحول أفكارك وخبرتك إلى محتوى يجعل جمهورك يفهمك ويتفاعل معك، من الفكرة والزاوية إلى التنفيذ والنشر.</p>
+          </div>
+          <div class="constellation-tags">
+            <div class="orbit-center">
+              <span class="glass-tag tag-orbit-1">كتابة السيناريو</span>
+              <span class="glass-tag tag-orbit-2">إنتاج الفيديو</span>
+              <span class="glass-tag tag-orbit-3">التصوير</span>
+              <span class="glass-tag tag-orbit-4">الموشن جرافيك</span>
+              <span class="glass-tag tag-orbit-5">التعليق الصوتي</span>
+              <span class="glass-tag tag-orbit-6">المونتاج</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 04: نوصل الرسالة -->
+      <section class="service-scene scene-04" id="scene-04">
+        <div class="watermark-num">04</div>
+        <div class="scene-visuals">
+          <div class="visual-message">
+            <div class="pulse-ring pulse-1"></div>
+            <div class="pulse-ring pulse-2"></div>
+            <div class="pulse-ring pulse-3"></div>
+            <div class="pulse-core"></div>
+          </div>
+        </div>
+        <div class="scene-content container">
+          <div class="content-wrapper difference-blend">
+            <h2 class="scene-title" data-split-words>نوصل الرسالة</h2>
+            <p class="scene-desc" data-split-words>وجودك لا يكفي… يجب أن تصل للشخص الصحيح. نخطط وننفذ حلول التسويق الرقمي التي تربط علامتك بجمهورها.</p>
+          </div>
+          <div class="constellation-tags">
+            <div class="orbit-center">
+              <span class="glass-tag tag-orbit-1">الحملات الرقمية</span>
+              <span class="glass-tag tag-orbit-2">الإعلانات</span>
+              <span class="glass-tag tag-orbit-3">تحسين الأداء</span>
+              <span class="glass-tag tag-orbit-4">استراتيجيات الوصول</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 05: نبني الأثر -->
+      <section class="service-scene scene-05" id="scene-05">
+        <div class="watermark-num">05</div>
+        <div class="scene-visuals">
+          <div class="visual-impact">
+            <div class="cyber-grid"></div>
+            <div class="cyber-light"></div>
+          </div>
+        </div>
+        <div class="scene-content container">
+          <div class="content-wrapper difference-blend">
+            <h2 class="scene-title" data-split-words>نبني الأثر</h2>
+            <p class="scene-desc" data-split-words>نبني لك البنية الرقمية التي تجعل مشروعك أكثر ذكاءً واستدامة، حتى يتحول من مجهود مستمر إلى منظومة تعمل بكفاءة.</p>
+          </div>
+          <div class="constellation-tags">
+            <div class="orbit-center">
+              <span class="glass-tag tag-orbit-1">تطوير تطبيقات الجوال</span>
+              <span class="glass-tag tag-orbit-2">تحسين محركات البحث SEO</span>
+              <span class="glass-tag tag-orbit-3">تصميم صفحات الهبوط</span>
+              <span class="glass-tag tag-orbit-4">أتمتة الأعمال</span>
+              <span class="glass-tag tag-orbit-5">بناء الأنظمة</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <script src="js/services-page.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

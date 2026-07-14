@@ -26,14 +26,13 @@
 .services-tree > :nth-child(5) { --item-index: 4; }
 .services-tree > :nth-child(6) { --item-index: 5; }
 
-/* ─── 2. Story Part Transitions ─── */
-.story-part {
-  opacity: 0.3;
-  transition: opacity 600ms ease;
+/* ─── 2. Story Tab & Slide Transitions ─── */
+.story-tab {
+  transition: transform 200ms ease;
 }
 
-.story-part.is-active {
-  opacity: 1;
+.story-tab:hover {
+  transform: translateY(-2px);
 }
 
 /* ─── 3. Journey Node Interactions ─── */
@@ -154,6 +153,6 @@
 }
 
 .journey-node.is-active .journey-node-dot,
-.story-part.is-active .story-node-dot {
+.story-tab.is-active .story-tab-dot {
   animation: glow-breathe 3s ease-in-out infinite;
 }

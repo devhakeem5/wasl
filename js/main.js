@@ -7,12 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeaderScroll();
   initMobileMenu();
   initHeroSequence();
-  initStoryParts();
+  initStoryCard();
   initJourneyPath();
   initSystemCards();
   initRevealOnScroll();
   initSmoothAnchors();
-  initStoryLineScroll();
   initServicesTrunkScroll();
 });
 
@@ -134,68 +133,136 @@ function initHeroSequence() {
 }
 
 /* ------------------------------------------------------------------
-   4. Story Parts — activate on scroll
+   4. Story Cinema — word-by-word animation + scene navigation
    ------------------------------------------------------------------ */
-function initStoryParts() {
-  const parts = document.querySelectorAll("[data-story-part]");
-  if (!parts.length) return;
 
-  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+/**
+ * Split every story text element into individual word-<span>s.
+ * Each span gets --wi (word index) so CSS can stagger the animation.
+ */
+function prepareStoryWords() {
+  const TARGETS = [
+    ".story-whisper",
+    ".story-strike",
+    ".story-golden-moment",
+    ".story-glow-text",
+    ".story-finale",
+    ".q-text",
+  ];
 
-  if (prefersReduced) {
-    parts.forEach(p => p.classList.add("is-active"));
-    return;
-  }
+  const sel = TARGETS.map((s) => `.story-scene ${s}`).join(", ");
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-active");
-        }
-      });
-    },
-    {
-      threshold: 0.25,
-      rootMargin: "-5% 0px -5% 0px",
-    }
-  );
-
-  parts.forEach((part) => observer.observe(part));
+  document.querySelectorAll(sel).forEach((el) => {
+    const text = el.textContent.trim();
+    if (!text) return;
+    const words = text.split(/\s+/);
+    el.innerHTML = words
+      .map((w, i) => `<span class="s-word" style="--wi:${i}">${w}</span>`)
+      .join(" ");
+  });
 }
 
-/* ------------------------------------------------------------------
-   5. Story Line — scroll-driven draw
-   ------------------------------------------------------------------ */
-function initStoryLineScroll() {
-  const storySection = document.getElementById("story");
-  const storyLine = document.querySelector("[data-story-line]");
-  if (!storySection || !storyLine) return;
+/** Reset word animations so they replay when the scene is re-entered */
+function resetSceneWords(scene) {
+  scene.querySelectorAll(".s-word, .q-text::after").forEach((w) => {
+    w.style.animation = "none";
+    void w.offsetWidth; // flush
+    w.style.animation = "";
+  });
+  // Also reset q-text underlines via re-cloning the element
+  // (::after pseudo-elements can't be targeted in JS directly;
+  //  toggling a class forces a style recalculation)
+  scene.querySelectorAll(".q-text").forEach((qt) => {
+    qt.classList.remove("u-done");
+    void qt.offsetWidth;
+  });
+}
 
-  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (prefersReduced) {
-    storyLine.style.strokeDashoffset = "0";
-    return;
-  }
+function initStoryCard() {
+  // 1. Pre-process: split all text into words
+  prepareStoryWords();
 
-  const updateLine = () => {
-    const rect = storySection.getBoundingClientRect();
-    const sectionHeight = rect.height;
-    const viewportHeight = window.innerHeight;
-    const scrolled = viewportHeight - rect.top;
-    const total = sectionHeight + viewportHeight;
-    const progress = Math.max(0, Math.min(1, scrolled / total));
+  const stage = document.querySelector("[data-story-stage]");
+  if (!stage) return;
 
-    // stroke-dasharray is "100", so dashoffset goes from 100 to 0
-    storyLine.style.strokeDashoffset = String(100 - progress * 100);
+  const scenes = stage.querySelectorAll("[data-story-scene]");
+  const dots = document.querySelectorAll("[data-story-go]");
+  if (!scenes.length) return;
+
+  let current = 0;
+  let isTransitioning = false;
+
+  const goTo = (idx) => {
+    if (isTransitioning || idx === current || idx < 0 || idx >= scenes.length) return;
+    isTransitioning = true;
+
+    const outScene = scenes[current];
+    const inScene  = scenes[idx];
+
+    // Fade out current scene
+    outScene.style.transition = "opacity 450ms ease";
+    outScene.style.opacity = "0";
+    outScene.style.pointerEvents = "none";
+
+    setTimeout(() => {
+      outScene.classList.remove("is-active");
+      outScene.style.position = "absolute";
+      outScene.style.opacity = "";
+      outScene.style.transition = "";
+
+      // Reset word animations on the incoming scene so they replay
+      resetSceneWords(inScene);
+
+      inScene.style.opacity = "0";
+      inScene.classList.add("is-active");
+      inScene.style.position = "relative";
+
+      // Force reflow — kicks off CSS animations from frame 0
+      void inScene.offsetWidth;
+
+      inScene.style.transition = "opacity 550ms ease";
+      inScene.style.opacity = "1";
+
+      setTimeout(() => {
+        inScene.style.opacity = "";
+        inScene.style.transition = "";
+        isTransitioning = false;
+      }, 550);
+    }, 450);
+
+    dots.forEach((dot, i) => dot.classList.toggle("is-active", i === idx));
+    current = idx;
   };
 
-  window.addEventListener("scroll", updateLine, { passive: true });
-  updateLine();
+  // Dot clicks
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      goTo(parseInt(dot.dataset.storyGo, 10));
+    });
+  });
+
+  // Keyboard arrows (only when story section is visible)
+  document.addEventListener("keydown", (e) => {
+    const story = document.getElementById("story");
+    if (!story) return;
+    const rect = story.getBoundingClientRect();
+    if (rect.top > window.innerHeight || rect.bottom < 0) return;
+    if (e.key === "ArrowLeft")  goTo(current + 1);
+    if (e.key === "ArrowRight") goTo(current - 1);
+  });
+
+  // Touch swipe
+  let touchStartX = 0;
+  stage.addEventListener("touchstart", (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener("touchend", (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
+  }, { passive: true });
 }
 
+
 /* ------------------------------------------------------------------
-   6. Journey Path — horizontal path & node interaction
+   5. Journey Path — horizontal path & node interaction
    ------------------------------------------------------------------ */
 function initJourneyPath() {
   const pathContainer = document.querySelector("[data-journey-path]");
