@@ -179,19 +179,11 @@ html, body.services-page {
   top: 50%; left: 50%;
   width: 2px; height: 2px;
   transform-style: preserve-3d;
-  /* Rotate the whole galaxy slowly */
-  animation: galaxy-rotate 60s linear infinite;
+  /* Keep a subtle tilt to show 3D depth, but do not rotate continuously */
+  transform: rotateZ(10deg);
 }
 
-@keyframes galaxy-rotate {
-  0% { transform: rotateY(0deg) rotateZ(10deg); }
-  100% { transform: rotateY(-360deg) rotateZ(10deg); }
-}
-
-/* Stop galaxy on hover of any tag */
-.constellation-tags:hover .orbit-center {
-  animation-play-state: paused;
-}
+/* Tags will just float in their 3D position after reveal */
 
 .glass-tag {
   position: absolute;
