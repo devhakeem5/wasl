@@ -1,3 +1,7 @@
+/* =====================================================================
+   وصل — responsive.css (محدّث للتصميم الجديد)
+   ===================================================================== */
+
 @media (max-width: 900px) {
   .menu-toggle {
     display: inline-block;
@@ -20,48 +24,105 @@
     display: flex;
   }
 
-  .hero-layout,
-  .final-cta-layout,
-  .system-panels,
-  .story-stage,
-  .services-grid,
-  .story-quotes {
+  /* Hero */
+  .hero-bridge {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .hero-connector {
+    height: 80px;
+  }
+
+  .hero-endpoint-label {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+
+  /* Story */
+  .story-part {
+    min-height: 60vh;
+    padding-block: 60px;
+  }
+
+  .story-node {
+    right: auto;
+    left: 24px;
+    transform: translateY(-50%);
+  }
+
+  .story-line-track {
+    right: auto;
+    left: 24px;
+    transform: translateX(-50%);
+  }
+
+  .story-part-inner {
+    margin-inline-start: 48px;
+    margin-inline-end: auto;
+    max-width: none;
+  }
+
+  /* Journey */
+  .journey-nodes {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+  }
+
+  .journey-node-name {
+    font-size: 0.75rem;
+  }
+
+  .journey-node-num {
+    font-size: 0.75rem;
+  }
+
+  .journey-path-track {
+    display: none;
+  }
+
+  .journey-detail {
+    padding: 20px;
+  }
+
+  /* System */
+  .system-cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .system-card,
+  .system-card:first-child,
+  .system-card:last-child {
+    border-radius: var(--radius-sm);
+  }
+
+  .system-connectors {
+    display: none;
+  }
+
+  /* Services */
+  .service-branch,
+  .service-branch-right,
+  .service-branch-left,
+  .service-branch-full {
     grid-template-columns: 1fr;
   }
 
-  .journey-timeline {
-    padding-inline-start: 0;
+  .service-branch-card {
+    grid-column: 1 !important;
   }
 
-  .journey-timeline::before {
-    display: none; /* Hide vertical line on mobile */
+  .service-branch-line {
+    display: none;
   }
 
-  .journey-step::before {
-    display: none; /* Hide node on mobile */
+  .services-trunk {
+    left: 24px;
   }
 
-  .journey-step {
-    padding: 24px;
-  }
-
-  .hero-mark {
-    min-height: auto;
-  }
-
-  .hero-orbit {
-    width: min(100%, 500px);
-  }
-
-  .hero-proof {
-    position: relative;
-    inset: auto;
-    margin-block-start: 18px;
-  }
-
-  .story-memory {
-    position: relative;
-    top: auto;
+  .service-branch-node {
+    left: 24px;
   }
 }
 
@@ -88,75 +149,80 @@
     padding-block-start: 112px;
   }
 
-  .hero-orbit {
-    width: min(100%, 360px);
+  .hero-connector-badge {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
   }
 
-  .hero-logo {
-    width: 58%;
-    border-radius: var(--radius-sm);
+  .hero-promise {
+    padding: 20px 22px;
   }
 
-  .golden-path-shadow {
-    stroke-width: 9;
+  .hero-promise p {
+    font-size: 1rem;
   }
 
-  .golden-path-line {
-    stroke-width: 3;
+  /* Story */
+  .story-part {
+    min-height: auto;
+    padding-block: 48px;
   }
 
-  .path-word {
-    min-width: auto;
-    padding: 7px 9px;
-    font-size: 0.76rem;
+  .story-part-inner {
+    padding-inline-start: 20px;
   }
 
-  .path-word::before {
-    width: 7px;
-    height: 7px;
-    box-shadow: 0 0 0 5px rgba(237, 183, 92, 0.14);
+  .story-neg-quote {
+    padding: 14px 16px;
   }
 
-  .hero-proof {
-    grid-template-columns: repeat(2, 1fr);
+  .story-questions-block {
+    padding: 16px;
   }
 
-  .story-body {
-    padding: 22px;
+  .story-closing-card {
+    padding: 18px 22px;
   }
 
-  .story-body p {
-    padding-inline-start: 22px;
+  /* Journey */
+  .journey-nodes {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
   }
 
-  .story-line {
-    inset-inline-start: 22px;
+  .journey-node:nth-child(4),
+  .journey-node:nth-child(5) {
+    grid-column: span 1;
   }
 
-  .system-tab {
-    padding: 12px 14px;
-    font-size: 0.9rem;
+  .journey-node {
+    padding: 8px 4px;
   }
 
-  .system-panel {
-    padding: 20px;
+  /* Services */
+  .service-branch-card {
+    padding: 22px 18px;
   }
 
-  .service-block {
-    padding: 24px 20px;
-  }
-
+  /* CTA */
   .final-cta {
     padding-block: 60px 80px;
   }
 
+  .cta-bridge-line {
+    width: 60px;
+  }
+
+  .cta-bridge-word {
+    font-size: 1.05rem;
+    padding: 6px 12px;
+  }
+
+  /* Footer */
   .footer-layout {
     grid-template-columns: 1fr;
     gap: 32px;
-  }
-
-  .story-questions {
-    padding: 14px;
   }
 
   .button,
@@ -165,6 +231,7 @@
   }
 }
 
+/* ─── Reduced Motion ─── */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -175,11 +242,55 @@
     animation-iteration-count: 1 !important;
   }
 
-  .golden-path-line {
+  .hero-connector-line {
     stroke-dashoffset: 0;
   }
 
-  .path-word {
+  .story-line-main {
+    stroke-dashoffset: 0;
+  }
+
+  .journey-path-line {
+    stroke-dashoffset: 0;
+  }
+
+  .services-trunk-line {
+    stroke-dashoffset: 0;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .story-part {
+    opacity: 1;
+  }
+
+  .story-part .story-part-body p,
+  .story-neg-quote,
+  .story-turn,
+  .story-highlight,
+  .story-question,
+  .story-closing-card {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-idea,
+  .hero-impact {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-connector-badge {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .hero-lead,
+  .hero-desc,
+  .hero-actions,
+  .hero-promise {
     opacity: 1;
     transform: none;
   }

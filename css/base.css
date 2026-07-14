@@ -2,6 +2,9 @@
   --primary: #002889;
   --primary-dark: #04217c;
   --accent: #edb75c;
+  --accent-light: #f5d08a;
+  --accent-glow: rgba(237, 183, 92, 0.5);
+  --accent-subtle: rgba(237, 183, 92, 0.12);
   --white: #fcfcfd;
   --light: #97a8d1;
   --secondary: #536caf;
@@ -17,6 +20,23 @@
   --section-space: clamp(80px, 10vw, 140px);
   --radius-sm: 8px;
   --radius-md: 18px;
+  --radius-lg: 28px;
+
+  /* Golden Line System */
+  --gl-width: 2px;
+  --gl-glow-width: 8px;
+  --gl-node-size: 14px;
+  --gl-node-glow: 0 0 20px var(--accent-glow), 0 0 40px rgba(237, 183, 92, 0.2);
+  --gl-color: var(--accent);
+  --gl-glow-color: var(--accent-glow);
+
+  /* Animation Timings */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 300ms;
+  --duration-normal: 600ms;
+  --duration-slow: 1000ms;
+  --duration-hero: 1500ms;
 }
 
 *,
