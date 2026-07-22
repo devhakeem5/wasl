@@ -273,79 +273,122 @@
       </section>
 
       <!-- ═══════════════════════════════════════════════════════════
-           القسم الخامس — منظومة وصل
+           القسم الخامس — منظومة وصل (رادار التشخيص والتوجيه)
            ═══════════════════════════════════════════════════════════ -->
       <section class="system section-light" id="system" aria-labelledby="system-title">
         <div class="container">
           <div class="section-heading" data-reveal>
             <p class="eyebrow">منظومة وصل</p>
-            <h2 id="system-title">اختر المرحلة التي يحتاجها مشروعك الآن.</h2>
+            <h2 id="system-title">أين تقف اليوم… حدد بوصلتك الاستراتيجية.</h2>
           </div>
 
-          <div class="system-connected" data-system>
-            <!-- Three connected cards -->
+          <div class="system-radar-stage" data-system-radar>
+            <!-- Radar Graphic Background -->
+            <div class="radar-visual" aria-hidden="true">
+              <div class="radar-circle radar-circle-outer"></div>
+              <div class="radar-circle radar-circle-inner"></div>
+              <div class="radar-core">
+                <img src="assets/images/only_logo.png" alt="" />
+                <span>علامتك</span>
+              </div>
+            </div>
+
+            <!-- 3 Diagnostic Cards -->
             <div class="system-cards">
               <button class="system-card is-active" data-system-card="0" aria-expanded="true">
-                <span class="system-card-num">01</span>
-                <h3>اكتشف بوصلتك</h3>
-                <p class="system-card-hint">عندما تكون فكرتك موجودة… لكن الطريق غير واضح.</p>
+                <div class="system-card-head">
+                  <span class="system-card-num">01</span>
+                  <span class="system-card-tag">التأكّد من الاتجاه</span>
+                </div>
+                <h3>عندما تكون الفكرة موجودة… لكن الطريق غير واضح</h3>
+                <p class="system-card-hint">نساعدك على رؤية الصورة كاملة وبناء الاستراتيجية.</p>
                 <div class="system-card-line" aria-hidden="true"></div>
               </button>
+
               <button class="system-card" data-system-card="1" aria-expanded="false">
-                <span class="system-card-num">02</span>
-                <h3>اصنع حضورك</h3>
-                <p class="system-card-hint">عندما تكون واضحًا… لكن العالم لم يسمع قصتك بعد.</p>
+                <div class="system-card-head">
+                  <span class="system-card-num">02</span>
+                  <span class="system-card-tag">صنع التأثير</span>
+                </div>
+                <h3>عندما تكون واضحًا… لكن لا أحد يسمعك</h3>
+                <p class="system-card-hint">نحول حضورك إلى محتوى يلامس الناس وحملات تصل بذكاء.</p>
                 <div class="system-card-line" aria-hidden="true"></div>
               </button>
+
               <button class="system-card" data-system-card="2" aria-expanded="false">
-                <span class="system-card-num">03</span>
-                <h3>ابنِ منظومة أثرك</h3>
-                <p class="system-card-hint">عندما لا تريد مجرد نتائج مؤقتة… بل نظامًا يعمل معك.</p>
+                <div class="system-card-head">
+                  <span class="system-card-num">03</span>
+                  <span class="system-card-tag">النمو المستدام</span>
+                </div>
+                <h3>عندما تريد أكثر من نتائج مؤقتة</h3>
+                <p class="system-card-hint">نبني لك منظومة رقمية متكاملة تعمل معك باستمرارية.</p>
                 <div class="system-card-line" aria-hidden="true"></div>
               </button>
             </div>
 
-            <!-- Connecting lines between cards (SVG) -->
-            <div class="system-connectors" aria-hidden="true">
-              <svg class="system-connectors-svg" viewBox="0 0 100 20" preserveAspectRatio="none">
-                <line class="system-conn-line" x1="16" y1="10" x2="50" y2="10" />
-                <line class="system-conn-line" x1="50" y1="10" x2="84" y2="10" />
-              </svg>
-            </div>
-
-            <!-- Detail panel -->
+            <!-- Detail Panels -->
             <div class="system-detail-area">
               <article class="system-detail is-active" data-system-detail="0">
-                <ul>
-                  <li>رؤيتك وأهدافك.</li>
-                  <li>جمهورك الحقيقي.</li>
-                  <li>موقعك في السوق.</li>
-                  <li>الرسالة التي يجب أن تصل.</li>
-                </ul>
-                <p class="system-detail-fit">تناسبك إذا كنت تبدأ مشروعًا جديدًا، أو تعيد بناء علامتك، أو تشعر أن صورتك لا تعكس قيمتك.</p>
-                <a class="text-link" href="#start">ناقش هذه المرحلة معنا</a>
+                <div class="system-detail-content">
+                  <div class="system-detail-questions">
+                    <h4>نساعدك على رؤية الصورة كاملة:</h4>
+                    <ul>
+                      <li>ماذا تقدم فعلًا؟</li>
+                      <li>من جمهورك الحقيقي؟</li>
+                      <li>أين موقعك في السوق؟</li>
+                    </ul>
+                  </div>
+                  <div class="system-detail-output">
+                    <h4>ثم نبني لك:</h4>
+                    <div class="output-badge">استراتيجية واضحة + هوية تعكسك</div>
+                    <p class="system-detail-fit">حتى لا تبدأ عشوائيًا… بل تنطلق بثقة.</p>
+                    <button type="button" class="button button-primary consult-trigger-btn" data-open-consult data-service-preset="بناء هوية واستراتيجية">
+                      ناقش مرحلة التأسيس معنا ←
+                    </button>
+                  </div>
+                </div>
               </article>
+
               <article class="system-detail" data-system-detail="1">
-                <ul>
-                  <li>أفكار إبداعية.</li>
-                  <li>صناعة محتوى يحكي قصتك.</li>
-                  <li>إدارة قنوات التواصل.</li>
-                  <li>حملات تسويق رقمي.</li>
-                  <li>رسائل تصل للشخص المناسب.</li>
-                </ul>
-                <p class="system-detail-fit">تناسبك إذا كان لديك مشروع قائم، أو تنشر بدون نتائج واضحة، أو تريد زيادة الثقة والتفاعل.</p>
-                <a class="text-link" href="#start">ناقش هذه المرحلة معنا</a>
+                <div class="system-detail-content">
+                  <div class="system-detail-questions">
+                    <h4>نحول حضورك إلى تأثير:</h4>
+                    <ul>
+                      <li>محتوى يُفهم ويخاطب العاطفة.</li>
+                      <li>رسائل تُقنع وتترك أثرًا.</li>
+                      <li>حملات رقمية تصل للشخص المناسب.</li>
+                    </ul>
+                  </div>
+                  <div class="system-detail-output">
+                    <h4>الوصول الأذكى:</h4>
+                    <div class="output-badge">صناعة محتوى + إدارات وتأثير رقمي</div>
+                    <p class="system-detail-fit">ليس الهدف أن تنشر أكثر… بل أن تصل بشكل أذكى.</p>
+                    <button type="button" class="button button-primary consult-trigger-btn" data-open-consult data-service-preset="صناعة محتوى وإعلام">
+                      ناقش مرحلة التأثير معنا ←
+                    </button>
+                  </div>
+                </div>
               </article>
+
               <article class="system-detail" data-system-detail="2">
-                <ul>
-                  <li>تحسين محركات البحث لزيادة الظهور.</li>
-                  <li>صفحات هبوط لتحويل الزوار إلى عملاء.</li>
-                  <li>تطبيقات وتجارب رقمية تخدم جمهورك.</li>
-                  <li>أتمتة الأعمال لتقليل الجهد وزيادة الكفاءة.</li>
-                  <li>متابعة وتحسين مستمر.</li>
-                </ul>
-                <p class="system-detail-fit">تناسبك إذا كنت تريد التوسع، أو بناء نظام أقوى، أو جعل مشروعك يعمل بذكاء.</p>
-                <a class="text-link" href="#start">ناقش هذه المرحلة معنا</a>
+                <div class="system-detail-content">
+                  <div class="system-detail-questions">
+                    <h4>نبني لك نظامًا يعمل معك:</h4>
+                    <ul>
+                      <li>صفحات هبوط عالية التحويل.</li>
+                      <li>ظهور مستمر في محركات البحث SEO.</li>
+                      <li>أدوات وأتمتة تجعل مشروعك ينمو بذكاء.</li>
+                    </ul>
+                  </div>
+                  <div class="system-detail-output">
+                    <h4>الاستدامة والنمو:</h4>
+                    <div class="output-badge">صفحات هبوط + أتمتة + بناء أنظمة</div>
+                    <p class="system-detail-fit">لأن النمو الحقيقي… لا يعتمد على الحملات فقط.</p>
+                    <button type="button" class="button button-primary consult-trigger-btn" data-open-consult data-service-preset="استشارة نمو متكاملة">
+                      ناقش مرحلة المنظومة معنا ←
+                    </button>
+                  </div>
+                </div>
               </article>
             </div>
           </div>
@@ -353,22 +396,17 @@
       </section>
 
       <!-- ═══════════════════════════════════════════════════════════
-           القسم السادس — الخدمات: شجرة متفرعة
+           القسم السادس — الأدوات التي تبني رحلتك (نهر الحلول)
            ═══════════════════════════════════════════════════════════ -->
       <section class="services section-soft" id="services" aria-labelledby="services-title">
         <div class="container">
           <div class="section-heading" data-reveal>
-            <p class="eyebrow">خدماتنا</p>
-            <h2 id="services-title">حلول تسويقية لعلامتك، متكاملة أو منفصلة حسب احتياجك.</h2>
-            <div style="margin-top: 2rem; text-align: center;">
-              <a href="services.html" class="primary-btn" style="background: var(--accent); color: var(--primary); padding: 12px 32px; border-radius: 30px; text-decoration: none; font-weight: 700; display: inline-block; transition: transform 0.3s ease;">
-                اكتشف إبداع خدماتنا بالكامل
-              </a>
-            </div>
+            <p class="eyebrow">الأدوات التي تبني رحلتك</p>
+            <h2 id="services-title">حلول تسويقية وتكنولوجية لعلامتك — متكاملة أو منفصلة حسب احتياجك.</h2>
           </div>
 
           <div class="services-tree" data-services-tree>
-            <!-- Central trunk line -->
+            <!-- Curved central trunk line -->
             <div class="services-trunk" aria-hidden="true">
               <svg class="services-trunk-svg" viewBox="0 0 4 100" preserveAspectRatio="none">
                 <line class="services-trunk-glow" x1="2" y1="0" x2="2" y2="100" />
@@ -376,7 +414,7 @@
               </svg>
             </div>
 
-            <!-- Service branches -->
+            <!-- Service 01 -->
             <article class="service-branch service-branch-right" data-reveal data-service-branch>
               <div class="service-branch-line" aria-hidden="true"></div>
               <div class="service-branch-node" aria-hidden="true"></div>
@@ -384,18 +422,19 @@
                 <span class="service-num">01</span>
                 <h3>نعرف الاتجاه</h3>
                 <p>
-                  قبل أن تبدأ بالظهور… تحتاج أن تعرف إلى أين تتجه. نبني لك خارطة
-                  واضحة تساعد كل خطوة بعدها على أن تكون في الاتجاه الصحيح.
+                  قبل أن تبدأ بالظهور… تحتاج أن تعرف إلى أين تتجه. كل مشروع لديه فكرة وقيمة، لكن النجاح يبدأ عندما تكون الصورة واضحة.
+                  نجلس معك لفهم مشروعك، أهدافك، جمهورك، والسوق، لنبني خارطة طريق واضحة.
                 </p>
-                <ul>
-                  <li>تخطيط استراتيجي</li>
-                  <li>دراسة السوق</li>
-                  <li>تحديد الجمهور</li>
-                  <li>بناء الرسالة</li>
-                </ul>
+                <div class="service-tags">
+                  <span class="glass-pill">تخطيط استراتيجي</span>
+                  <span class="glass-pill">دراسة السوق</span>
+                  <span class="glass-pill">تحديد الجمهور</span>
+                  <span class="glass-pill">بناء الرسالة</span>
+                </div>
               </div>
             </article>
 
+            <!-- Service 02 -->
             <article class="service-branch service-branch-left" data-reveal data-service-branch>
               <div class="service-branch-line" aria-hidden="true"></div>
               <div class="service-branch-node" aria-hidden="true"></div>
@@ -403,19 +442,19 @@
                 <span class="service-num">02</span>
                 <h3>نبني الهوية</h3>
                 <p>
-                  عندما تتضح الفكرة… نمنحها شكلًا يُرى. نبني هوية بصرية تعكس جوهر
-                  مشروعك وتجعله قابلا للتذكر.
+                  عندما تتضح الفكرة… نمنحها شكلًا يُرى. العلامة القوية لا تبدأ من الشعار فقط، بل من شخصية يتذكرها الناس.
+                  نصنع لغة بصرية تعكس جوهر مشروعك وتصنع له انطباعًا لا يُنسى.
                 </p>
-                <ul>
-                  <li>الشعار</li>
-                  <li>الألوان</li>
-                  <li>الخطوط</li>
-                  <li>أسلوب التواصل</li>
-                  <li>النظام البصري الكامل</li>
-                </ul>
+                <div class="service-tags">
+                  <span class="glass-pill">تصميم الشعار</span>
+                  <span class="glass-pill">الألوان والخطوط</span>
+                  <span class="glass-pill">أسلوب التواصل</span>
+                  <span class="glass-pill">النظام البصري الكامل</span>
+                </div>
               </div>
             </article>
 
+            <!-- Service 03 -->
             <article class="service-branch service-branch-full" data-reveal data-service-branch>
               <div class="service-branch-line" aria-hidden="true"></div>
               <div class="service-branch-node" aria-hidden="true"></div>
@@ -423,20 +462,19 @@
                 <span class="service-num">03</span>
                 <h3>نصنع القصة</h3>
                 <p>
-                  نحول أفكارك وخبرتك إلى محتوى يجعل جمهورك يفهمك ويتفاعل معك، من
-                  الفكرة والزاوية إلى التنفيذ والنشر.
+                  لأن القيمة التي لا تُروى… قد لا تصل. نحوّل أفكارك وخبرتك إلى محتوى يجعل جمهورك يفهمك ويتفاعل معك.
+                  من الفكرة والسيناريو إلى الإنتاج والمونتاج والموشن جرافيك.
                 </p>
-                <ul>
-                  <li>كتابة المحتوى والسيناريو</li>
-                  <li>إنتاج الفيديو</li>
-                  <li>التصوير</li>
-                  <li>الموشن جرافيك</li>
-                  <li>التعليق الصوتي</li>
-                  <li>المونتاج</li>
-                </ul>
+                <div class="service-tags">
+                  <span class="glass-pill">كتابة المحتوى والسيناريو</span>
+                  <span class="glass-pill">إنتاج الفيديو والتصوير</span>
+                  <span class="glass-pill">الموشن جرافيك</span>
+                  <span class="glass-pill">التعليق الصوتي والمونتاج</span>
+                </div>
               </div>
             </article>
 
+            <!-- Service 04 -->
             <article class="service-branch service-branch-right" data-reveal data-service-branch>
               <div class="service-branch-line" aria-hidden="true"></div>
               <div class="service-branch-node" aria-hidden="true"></div>
@@ -444,66 +482,101 @@
                 <span class="service-num">04</span>
                 <h3>نوصل الرسالة</h3>
                 <p>
-                  وجودك لا يكفي… يجب أن تصل للشخص الصحيح. نخطط وننفذ حلول التسويق
-                  الرقمي التي تربط علامتك بجمهورها.
+                  وجودك لا يكفي… يجب أن تصل للشخص الصحيح. نخطط وننفذ حلول التسويق الرقمي التي تربط علامتك بجمهورها.
+                  نختار القنوات المناسبة ونحلل الأداء لنضمن أن كل ريال يُنفق يصنع فرقًا.
                 </p>
-                <ul>
-                  <li>إدارة الحملات الرقمية</li>
-                  <li>الإعلانات</li>
-                  <li>تحسين الأداء</li>
-                  <li>استراتيجيات الوصول</li>
-                </ul>
+                <div class="service-tags">
+                  <span class="glass-pill">إدارة الحملات الرقمية</span>
+                  <span class="glass-pill">الإعلانات الموجهة</span>
+                  <span class="glass-pill">تحسين الأداء</span>
+                  <span class="glass-pill">استراتيجيات الوصول</span>
+                </div>
               </div>
             </article>
 
+            <!-- Service 05 -->
             <article class="service-branch service-branch-left" data-reveal data-service-branch>
               <div class="service-branch-line" aria-hidden="true"></div>
               <div class="service-branch-node" aria-hidden="true"></div>
               <div class="service-branch-card">
                 <span class="service-num">05</span>
-                <h3>نبني الأثر</h3>
+                <h3>نبني ما يستمر</h3>
                 <p>
-                  نبني لك البنية الرقمية التي تجعل مشروعك أكثر ذكاءً واستدامة،
-                  حتى يتحول من مجهود مستمر إلى منظومة تعمل بكفاءة.
+                  الأثر لا يعتمد على لحظة… بل على منظومة. نحوّل حضورك الرقمي إلى تجربة متكاملة تعمل باستمرارية وذكاء.
+                  تطوير تطبيقات الجوال، صفحات الهبوط، تحسين محركات البحث SEO، وأتمتة العمليات.
                 </p>
-                <ul>
-                  <li>تحسين محركات البحث SEO</li>
-                  <li>تصميم صفحات الهبوط</li>
-                  <li>تطوير تطبيقات الجوال</li>
-                  <li>أتمتة الأعمال</li>
-                  <li>بناء الأنظمة الرقمية</li>
-                </ul>
+                <div class="service-tags">
+                  <span class="glass-pill">تطوير تطبيقات الجوال</span>
+                  <span class="glass-pill">تحسين SEO</span>
+                  <span class="glass-pill">صفحات الهبوط</span>
+                  <span class="glass-pill">أتمتة الأعمال</span>
+                  <span class="glass-pill">بناء الأنظمة</span>
+                </div>
               </div>
             </article>
+          </div>
+
+          <!-- Cinematic Services Gateway Banner -->
+          <div class="services-gateway-banner" data-reveal>
+            <div class="gateway-content">
+              <h3>هل تريد الاستغراق في تفاصيل الحلول والأنظمة الرقمية؟</h3>
+              <p>اكتشف الفلسفة الكاملة لكافة الخدمات والأدوات الرقمية في دليلنا السينمائي الشامل.</p>
+              <a href="services.html" class="button button-primary gateway-btn">
+                استكشف دليل الخدمات السينمائي الكامل ←
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- ═══════════════════════════════════════════════════════════
-           القسم السابع — ابدأ رحلتك (CTA)
+           القسم السابع — بوابة انطلاق الأثر (VIP Portal)
            ═══════════════════════════════════════════════════════════ -->
-      <section class="final-cta section-dark" id="start" aria-labelledby="start-title">
-        <div class="container final-cta-layout" data-reveal>
-          <!-- Completion node -->
+      <section class="final-cta section-dark" id="start" aria-labelledby="cta-title">
+        <div class="container final-cta-layout">
+          <div class="cta-portal-bg" aria-hidden="true">
+            <div class="portal-logo-glow">
+              <img src="assets/images/only_logo.png" alt="" />
+            </div>
+          </div>
+
           <div class="cta-completion-node" aria-hidden="true">
             <div class="cta-node-ring"></div>
             <div class="cta-node-dot"></div>
           </div>
 
-          <p class="eyebrow">ابدأ رحلتك</p>
-          <h2 id="start-title">هل فكرتك جاهزة لتصل؟</h2>
+          <p class="eyebrow">صناعة الأثر تبدأ بقرار</p>
+          <h2 id="cta-title" data-reveal>
+            من الفكرة إلى النمو…<br />
+            <span class="accent-text">هل أنت جاهز لتكون العلامة التي لا تُنسى؟</span>
+          </h2>
 
-          <!-- Mini bridge: repeat of الفكرة ← الأثر -->
-          <div class="cta-mini-bridge" aria-hidden="true">
-            <span class="cta-bridge-word">الفكرة</span>
-            <div class="cta-bridge-line"></div>
-            <span class="cta-bridge-word">الأثر</span>
+          <p class="cta-desc" data-reveal>
+            كل قصة نجاح عظيمة بدأت بجلسة حوار واحدة. دعنا نحدد بوصلتك اليوم ونضع مشروعك على مسار الأثر المستمر.
+          </p>
+
+          <div class="cta-actions-group" data-reveal>
+            <button type="button" class="button button-primary cta-btn-main" data-open-consult>
+              احجز جلسة استشارة مجانية مع خبيرنا ←
+            </button>
+            <a href="https://wa.me/966500000000" target="_blank" rel="noopener" class="button button-glass cta-btn-wa">
+              تواصل مباشر عبر الواتساب VIP 💬
+            </a>
           </div>
 
-          <p class="cta-desc">ابدأ رحلتك مع وصل، ودعنا نبني الطريق من الفكرة إلى الأثر.</p>
-          <div class="hero-actions cta-actions">
-            <a class="button button-primary" href="mailto:hello@wasl.example">ابدأ رحلتك</a>
-            <a class="button button-secondary" href="mailto:hello@wasl.example">تواصل معنا</a>
+          <div class="cta-trust-strip" data-reveal>
+            <div class="trust-item">
+              <span class="trust-icon">⚡</span>
+              <span>استجابة فورية خلال 3 ساعات عمل</span>
+            </div>
+            <div class="trust-item">
+              <span class="trust-icon">🔒</span>
+              <span>اتفاقية سرية معلومات مسبقة (NDA)</span>
+            </div>
+            <div class="trust-item">
+              <span class="trust-icon">🌐</span>
+              <span>تغطية كاملة للمملكة والخليج العربي</span>
+            </div>
           </div>
         </div>
       </section>

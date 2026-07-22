@@ -109,7 +109,18 @@ function initConsultModal() {
     document.body.style.overflow = "";
   };
 
-  openTriggers.forEach((btn) => btn.addEventListener("click", open));
+  openTriggers.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      open();
+      const preset = btn.dataset.servicePreset;
+      if (preset) {
+        const pill = modal.querySelector(`[data-service="${preset}"]`);
+        if (pill && !pill.classList.contains("is-selected")) {
+          pill.click();
+        }
+      }
+    });
+  });
   if (closeBtn) closeBtn.addEventListener("click", close);
   overlay.addEventListener("click", close);
 
