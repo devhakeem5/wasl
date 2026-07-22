@@ -897,7 +897,7 @@ html[dir="rtl"] .transform-copy {
 }
 
 /* =====================================================================
-   SERVICES — ماتريكس الحلول البانورامي (Expanding 5-Column Studio Matrix)
+   SERVICES — استوديو الاستكشاف الفاخر (Interactive Masterclass Studio)
    ===================================================================== */
 .services {
   padding-block: var(--section-space);
@@ -905,127 +905,210 @@ html[dir="rtl"] .transform-copy {
   overflow: hidden;
 }
 
-.solutions-panoramic-matrix {
-  display: flex;
-  gap: 16px;
-  min-height: 520px;
+.solutions-master-studio {
+  display: grid;
+  grid-template-columns: minmax(280px, 340px) 1fr;
+  gap: clamp(32px, 4vw, 56px);
   margin-block-start: 48px;
+  align-items: start;
   position: relative;
   z-index: 2;
 }
 
-.matrix-column {
-  flex: 1;
+/* ─── Left Navigation Hub ─── */
+.studio-nav-hub {
   display: flex;
   flex-direction: column;
-  padding: 36px 28px;
-  border-radius: var(--radius-lg);
-  background: rgba(0, 20, 60, 0.75);
-  border: 1px solid rgba(241, 198, 125, 0.18);
-  backdrop-filter: blur(24px);
-  cursor: pointer;
-  overflow: hidden;
-  transition: flex 600ms var(--ease-out-expo), background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
+  gap: 12px;
+}
+
+.studio-nav-item {
   position: relative;
-}
-
-.matrix-column:hover {
-  border-color: var(--gold-line);
-  box-shadow: 0 12px 40px rgba(0, 29, 83, 0.3);
-}
-
-.matrix-column.is-expanded {
-  flex: 3.5;
-  background: linear-gradient(160deg, #00133A 0%, #001D53 60%, #000B24 100%);
-  border-color: var(--accent);
-  box-shadow: 0 20px 60px rgba(0, 29, 83, 0.45), 0 0 30px rgba(241, 198, 125, 0.2);
-  cursor: default;
-}
-
-/* Column Header */
-.matrix-col-header {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-block-end: 24px;
-  flex-shrink: 0;
+  gap: 16px;
+  padding: 18px 20px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 20, 60, 0.6);
+  border: 1px solid rgba(241, 198, 125, 0.15);
+  backdrop-filter: blur(16px);
+  text-align: right;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 300ms var(--ease-out-expo);
 }
 
-.matrix-col-num {
-  font-size: 1.1rem;
+.studio-nav-item:hover {
+  background: rgba(0, 29, 83, 0.85);
+  border-color: var(--gold-line);
+  transform: translateX(-4px);
+}
+
+.studio-nav-item.is-active {
+  background: linear-gradient(135deg, rgba(0, 29, 83, 0.95), rgba(0, 15, 46, 0.98));
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(241, 198, 125, 0.12);
+  transform: translateX(-6px);
+}
+
+.studio-nav-num {
+  font-size: 0.95rem;
   font-weight: 800;
   color: var(--accent);
-  padding: 6px 14px;
+  padding: 6px 12px;
   border-radius: 20px;
   background: rgba(241, 198, 125, 0.12);
   border: 1px solid var(--gold-line);
+  flex-shrink: 0;
 }
 
-.matrix-col-title {
+.studio-nav-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.studio-nav-title {
   color: var(--white);
-  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
-  margin: 0;
-  white-space: nowrap;
+  font-size: 1.12rem;
+  font-weight: 700;
 }
 
-/* Column Body (Hidden when collapsed, revealed smoothly when expanded) */
-.matrix-col-body {
+.studio-nav-subtitle {
+  color: rgba(245, 247, 249, 0.65);
+  font-size: 0.82rem;
+}
+
+.studio-nav-item.is-active .studio-nav-subtitle {
+  color: rgba(245, 247, 249, 0.85);
+}
+
+.studio-nav-bar {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 3px;
+  background: var(--accent);
+  transition: width 300ms ease;
+}
+
+.studio-nav-item.is-active .studio-nav-bar {
+  width: 100%;
+}
+
+/* ─── Right Master Stage Canvas ─── */
+.studio-stage-canvas {
+  position: relative;
+  min-height: 480px;
+}
+
+.studio-panel {
+  position: absolute;
+  inset: 0;
   opacity: 0;
   visibility: hidden;
   transform: translateY(16px);
-  transition: opacity 450ms ease, transform 450ms ease, visibility 450ms ease;
+  transition: opacity 500ms var(--ease-out-expo), transform 500ms var(--ease-out-expo), visibility 500ms ease;
+  padding: 40px 36px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, rgba(0, 19, 58, 0.95) 0%, rgba(0, 29, 83, 0.98) 100%);
+  border: 1px solid var(--gold-line);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(24px);
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 24px;
+  pointer-events: none;
+  overflow: hidden;
 }
 
-.matrix-column.is-expanded .matrix-col-body {
+.studio-panel.is-active {
+  position: relative;
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
-  transition-delay: 200ms;
+  pointer-events: auto;
 }
 
-.matrix-quote {
-  font-size: 1.05rem;
+.studio-watermark {
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  font-size: 11rem;
+  font-weight: 900;
+  color: rgba(241, 198, 125, 0.04);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.studio-quote {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
   font-style: italic;
   color: var(--accent);
   margin: 0;
-  padding-inline-start: 16px;
-  border-inline-start: 3px solid var(--accent);
+  padding: 16px 20px;
+  border-radius: var(--radius-sm);
+  background: rgba(241, 198, 125, 0.08);
+  border-inline-start: 4px solid var(--accent);
   line-height: 1.7;
 }
 
-.matrix-desc {
+.studio-desc {
   color: rgba(245, 247, 249, 0.88);
-  font-size: 0.98rem;
+  font-size: 1rem;
   line-height: 1.85;
   margin: 0;
 }
 
-.matrix-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-block-start: 8px;
-}
-
-.matrix-pill {
-  font-size: 0.84rem;
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: 20px;
-  background: rgba(245, 247, 249, 0.06);
-  border: 1px solid rgba(245, 247, 249, 0.18);
+.deliverables-heading {
   color: var(--white);
-  transition: all 220ms ease;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-block-end: 16px;
 }
 
-.matrix-pill:hover {
-  background: rgba(241, 198, 125, 0.2);
+.deliverables-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.deliverable-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  background: rgba(245, 247, 249, 0.04);
+  border: 1px solid rgba(245, 247, 249, 0.12);
+  transition: all 250ms ease;
+}
+
+.deliverable-card:hover {
+  background: rgba(241, 198, 125, 0.12);
   border-color: var(--accent);
-  color: var(--accent);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+}
+
+.deliverable-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-block-start: 2px;
+}
+
+.deliverable-card h5 {
+  color: var(--white);
+  font-size: 0.98rem;
+  margin: 0 0 4px;
+}
+
+.deliverable-card p {
+  color: rgba(245, 247, 249, 0.7);
+  font-size: 0.84rem;
+  margin: 0;
+  line-height: 1.5;
 }
 
 /* ─── Services Gateway Banner ─── */

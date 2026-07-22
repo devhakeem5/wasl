@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initSystemCards();
   initRevealOnScroll();
   initSmoothAnchors();
-  initPanoramicMatrix();
+  initMasterStudio();
   initVIPCursor();
   initCardSpotlightAndTilt();
   initServicePills();
@@ -345,25 +345,65 @@ function initSystemCards() {
 }
 
 /* ------------------------------------------------------------------
-   9. Panoramic Strategy Matrix — expanding 5-column studio showcase
+   9. Masterclass Solutions Studio — spacious 2-column hub and stage
    ------------------------------------------------------------------ */
-function initPanoramicMatrix() {
-  const matrix = document.querySelector("[data-matrix]");
-  if (!matrix) return;
+function initMasterStudio() {
+  const studio = document.querySelector("[data-studio]");
+  if (!studio) return;
 
-  const cols = matrix.querySelectorAll("[data-matrix-col]");
-  if (!cols.length) return;
+  const navItems = studio.querySelectorAll("[data-studio-nav]");
+  const panels = studio.querySelectorAll("[data-studio-panel]");
+  if (!navItems.length || !panels.length) return;
 
-  cols.forEach((col) => {
-    col.addEventListener("mouseenter", () => {
-      cols.forEach((c) => c.classList.remove("is-expanded"));
-      col.classList.add("is-expanded");
+  let currentIndex = 0;
+  let autoTimer = null;
+
+  const activateStage = (index) => {
+    currentIndex = index;
+    navItems.forEach((nav, i) => {
+      const active = i === index;
+      nav.classList.toggle("is-active", active);
+      nav.setAttribute("aria-selected", active ? "true" : "false");
     });
-    col.addEventListener("click", () => {
-      cols.forEach((c) => c.classList.remove("is-expanded"));
-      col.classList.add("is-expanded");
+    panels.forEach((panel, i) => {
+      panel.classList.toggle("is-active", i === index);
+    });
+  };
+
+  const startAutoCycle = () => {
+    stopAutoCycle();
+    autoTimer = setInterval(() => {
+      const nextIdx = (currentIndex + 1) % navItems.length;
+      activateStage(nextIdx);
+    }, 5000);
+  };
+
+  const stopAutoCycle = () => {
+    if (autoTimer) {
+      clearInterval(autoTimer);
+      autoTimer = null;
+    }
+  };
+
+  navItems.forEach((nav) => {
+    nav.addEventListener("click", () => {
+      const idx = parseInt(nav.dataset.studioNav, 10);
+      activateStage(idx);
+      stopAutoCycle();
+    });
+
+    nav.addEventListener("mouseenter", () => {
+      const idx = parseInt(nav.dataset.studioNav, 10);
+      activateStage(idx);
+      stopAutoCycle();
     });
   });
+
+  studio.addEventListener("mouseleave", () => {
+    startAutoCycle();
+  });
+
+  startAutoCycle();
 }
 
 /* ------------------------------------------------------------------
