@@ -4,7 +4,7 @@
 
 body.story-page {
   margin: 0; padding: 0;
-  background-color: #030712; 
+  background-color: #001D53; 
   color: var(--white);
   font-family: "IBM Plex Sans Arabic", sans-serif;
   overflow: hidden; /* We manage scroll inside container */
@@ -63,7 +63,7 @@ body.story-page {
    SCENE 1: THE MONOLITH (البداية)
    ========================================================================== */
 #scene-1 {
-  background: radial-gradient(circle at center, #0a1020 0%, #030712 100%);
+  background: radial-gradient(circle at center, #00266e 0%, #001D53 100%);
 }
 
 .monolith-wrapper {
@@ -146,14 +146,14 @@ body.story-page {
 .golden-moment-text h2 {
   color: #fff;
   font-size: clamp(2rem, 4vw, 3.5rem);
-  text-shadow: 0 0 30px rgba(237, 183, 92, 0.8);
+  text-shadow: 0 0 30px rgba(241, 198, 125, 0.8);
   margin: 0;
 }
 
 /* Scene 1 Active State */
 #scene-1.is-active .left-block { transform: translateX(-60px) rotateY(-15deg); opacity: 0.2; }
 #scene-1.is-active .right-block { transform: translateX(60px) rotateY(15deg); opacity: 0.2; }
-#scene-1.is-active .golden-beam { height: 120%; opacity: 1; width: 100vw; background: radial-gradient(circle, rgba(237,183,92,0.1) 0%, transparent 70%); box-shadow: none; }
+#scene-1.is-active .golden-beam { height: 120%; opacity: 1; width: 100vw; background: radial-gradient(circle, rgba(241, 198, 125, 0.1) 0%, transparent 70%); box-shadow: none; }
 #scene-1.is-active .golden-moment-text { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
 
 
@@ -161,15 +161,15 @@ body.story-page {
    SCENE 2: THE VISION GRID (الرؤية)
    ========================================================================== */
 #scene-2 {
-  background: #030712;
+  background: #001D53;
 }
 
 .golden-ring-bg {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
   width: 80vh; height: 80vh;
   border-radius: 50%;
-  border: 1px solid rgba(237, 183, 92, 0.1);
-  box-shadow: inset 0 0 100px rgba(237, 183, 92, 0.05);
+  border: 1px solid rgba(241, 198, 125, 0.1);
+  box-shadow: inset 0 0 100px rgba(241, 198, 125, 0.05);
   animation: slow-spin 20s linear infinite;
   z-index: 0;
 }
@@ -225,8 +225,8 @@ body.story-page {
 
 .v-card-3d.highlight {
   grid-column: span 2;
-  background: linear-gradient(to top, rgba(237, 183, 92, 0.1) 0%, rgba(15, 20, 30, 0.8) 100%);
-  border: 1px solid rgba(237, 183, 92, 0.3);
+  background: linear-gradient(to top, rgba(241, 198, 125, 0.1) 0%, rgba(15, 20, 30, 0.8) 100%);
+  border: 1px solid rgba(241, 198, 125, 0.3);
 }
 
 /* Scene 2 Active State */
@@ -241,7 +241,7 @@ body.story-page {
    SCENE 3: CONCENTRIC IMPACT (صناعة الأثر)
    ========================================================================== */
 #scene-3 {
-  background: radial-gradient(circle at center, #050a15 0%, #030712 100%);
+  background: radial-gradient(circle at center, #00266e 0%, #001D53 100%);
 }
 
 .concentric-bg {
@@ -252,8 +252,8 @@ body.story-page {
 .c-ring {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(237, 183, 92, 0.15);
-  box-shadow: 0 0 50px rgba(237, 183, 92, 0.05) inset;
+  border: 1px solid rgba(241, 198, 125, 0.15);
+  box-shadow: 0 0 50px rgba(241, 198, 125, 0.05) inset;
   opacity: 0;
   transform: scale(0.5);
   transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
@@ -279,7 +279,7 @@ body.story-page {
   transform: translateY(30px);
   transition: all 0.8s ease;
 }
-.iq-3 { border-color: rgba(237, 183, 92, 0.4); color: var(--accent); box-shadow: 0 10px 30px rgba(237, 183, 92, 0.1); }
+.iq-3 { border-color: rgba(241, 198, 125, 0.4); color: var(--accent); box-shadow: 0 10px 30px rgba(241, 198, 125, 0.1); }
 
 .impact-finale {
   text-align: center;
@@ -292,14 +292,14 @@ body.story-page {
 }
 
 .s-cta-btn {
-  background: var(--accent); color: #000; padding: 18px 45px;
+  background: var(--accent); color: var(--primary); padding: 18px 45px;
   border-radius: 40px; text-decoration: none; font-weight: 800;
   font-size: 1.2rem; display: inline-block; transition: all 0.3s;
-  box-shadow: 0 15px 30px rgba(237, 183, 92, 0.2);
+  box-shadow: 0 15px 30px rgba(241, 198, 125, 0.2);
 }
 .s-cta-btn:hover {
   transform: translateY(-5px);
-  box-shadow: 0 25px 40px rgba(237, 183, 92, 0.4);
+  box-shadow: 0 25px 40px rgba(241, 198, 125, 0.4);
 }
 
 /* Scene 3 Active State */

@@ -21,14 +21,12 @@
 
 ```css
 :root {
-  --primary: #002889;
-  --primary-dark: #04217C;
-  --accent: #EDB75C;
-  --white: #FCFCFD;
-  --light: #97A8D1;
-  --secondary: #536CAF;
-  --ink: #07142F;
-  --muted: #D9E0F5;
+  --primary: #001D53;
+  --secondary: #E6E7EB;
+  --accent: #F1C67D;
+  --bg-dark: #001D53;
+  --surface: #F5F7F9;
+  --shadow: #475268;
 }
 ```
 

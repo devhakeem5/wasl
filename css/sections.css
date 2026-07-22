@@ -1,4 +1,4 @@
-﻿/* =====================================================================
+/* =====================================================================
    وصل — sections.css (إعادة تصميم كاملة)
    فلسفة "الخط الذي يصل"
    ===================================================================== */
@@ -38,7 +38,7 @@
   inset: 0;
   z-index: -1;
   background-image:
-    radial-gradient(circle, rgba(151, 168, 209, 0.15) 1px, transparent 1px);
+    radial-gradient(circle, rgba(230, 231, 235, 0.15) 1px, transparent 1px);
   background-size: 40px 40px;
   mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%);
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%);
@@ -54,7 +54,7 @@
   top: -15%;
   right: -10%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(237, 183, 92, 0.12), transparent 60%);
+  background: radial-gradient(circle, rgba(241, 198, 125, 0.12), transparent 60%);
   pointer-events: none;
   z-index: -1;
 }
@@ -363,7 +363,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(160deg, #04217c, #07142f 40%, #0a0e1a 100%);
+  background: linear-gradient(160deg, #00133A, #001D53 40%, #000F2E 100%);
   padding-block: 80px;
   isolation: isolate;
 }
@@ -388,7 +388,7 @@
   height: 500px;
   top: -10%;
   right: -8%;
-  background: radial-gradient(circle, rgba(237, 183, 92, 0.3), transparent 70%);
+  background: radial-gradient(circle, rgba(241, 198, 125, 0.3), transparent 70%);
   animation: orb-drift-1 12s ease-in-out infinite alternate;
 }
 
@@ -397,7 +397,7 @@
   height: 400px;
   bottom: -5%;
   left: -5%;
-  background: radial-gradient(circle, rgba(0, 60, 180, 0.3), transparent 70%);
+  background: radial-gradient(circle, rgba(0, 29, 83, 0.3), transparent 70%);
   animation: orb-drift-2 10s ease-in-out infinite alternate;
 }
 
@@ -1072,7 +1072,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(160deg, #04217c, #07142f 40%, #0a0e1a 100%);
+  background: linear-gradient(160deg, #00133A, #001D53 40%, #000F2E 100%);
   padding-block: 80px;
   isolation: isolate;
 }
@@ -1097,7 +1097,7 @@
   height: 500px;
   top: -10%;
   right: -8%;
-  background: radial-gradient(circle, rgba(237, 183, 92, 0.3), transparent 70%);
+  background: radial-gradient(circle, rgba(241, 198, 125, 0.3), transparent 70%);
   animation: orb-drift-1 12s ease-in-out infinite alternate;
 }
 
@@ -1106,7 +1106,7 @@
   height: 400px;
   bottom: -5%;
   left: -5%;
-  background: radial-gradient(circle, rgba(0, 60, 180, 0.3), transparent 70%);
+  background: radial-gradient(circle, rgba(0, 29, 83, 0.3), transparent 70%);
   animation: orb-drift-2 10s ease-in-out infinite alternate;
 }
 
