@@ -39,32 +39,56 @@
       <div class="container header-layout">
         <a class="brand" href="index.html" aria-label="وصل لنمو الأعمال - العودة للرئيسية">
           <img src="assets/images/only_logo.png" alt="شعار وصل لنمو الأعمال" />
-          <span>وصل لنمو الأعمال</span>
+          <span class="brand-name">
+            <span class="brand-ar">وصل</span>
+            <span class="brand-en">Wasl</span>
+          </span>
         </a>
 
         <button
-          class="menu-toggle"
+          class="many-toggle"
           type="button"
           aria-label="فتح القائمة"
-          aria-controls="site-nav"
+          aria-controls="many-drawer"
           aria-expanded="false"
-          data-menu-toggle
+          data-many-toggle
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span class="many-toggle-text">Many</span>
+          <span class="many-toggle-dot" aria-hidden="true"></span>
         </button>
-
-        <nav class="site-nav" id="site-nav" aria-label="التنقل الرئيسي" data-site-nav>
-          <a href="index.html#home">البداية</a>
-          <a href="story.html">قصتنا</a>
-          <a href="index.html#journey">رحلتك مع وصل</a>
-          <a href="index.html#system">منظومة وصل</a>
-          <a href="services.html" class="active">خدماتنا</a>
-          <a class="nav-cta" href="index.html#start">ابدأ رحلتك</a>
-        </nav>
       </div>
     </header>
+
+    <!-- Many Drawer (Off-canvas navigation) -->
+    <div class="many-overlay" data-many-overlay aria-hidden="true"></div>
+    <nav
+      class="many-drawer"
+      id="many-drawer"
+      aria-label="القائمة الرئيسية"
+      data-many-drawer
+    >
+      <div class="many-drawer-head">
+        <span class="many-drawer-brand">
+          <img src="assets/images/only_logo.png" alt="" aria-hidden="true" />
+          <span>وصل</span>
+        </span>
+        <button class="many-close" type="button" aria-label="إغلاق القائمة" data-many-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <ul class="many-drawer-links">
+        <li><a href="index.html#home" data-many-link><span class="many-num">01</span>البداية</a></li>
+        <li><a href="index.html#why" data-many-link><span class="many-num">02</span>ربما تساءلت</a></li>
+        <li><a href="index.html#moments" data-many-link><span class="many-num">03</span>لحظات نصنع فيها الفرق</a></li>
+        <li><a href="index.html#transform" data-many-link><span class="many-num">04</span>كيف تتحول فكرتك لأثر</a></li>
+        <li><a href="index.html#system" data-many-link><span class="many-num">05</span>منظومة وصل</a></li>
+        <li><a href="services.html" data-many-link><span class="many-num">06</span>خدماتنا</a></li>
+        <li><a href="story.html" data-many-link><span class="many-num">07</span>قصتنا</a></li>
+      </ul>
+      <div class="many-drawer-foot">
+        <a href="mailto:hello@wasl.example">hello@wasl.example</a>
+      </div>
+    </nav>
 
     <!-- Side Navigation for Services -->
     <nav class="services-nav">

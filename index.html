@@ -24,299 +24,252 @@
       <div class="container header-layout">
         <a class="brand" href="#home" aria-label="وصل لنمو الأعمال - العودة للبداية">
           <img src="assets/images/only_logo.png" alt="شعار وصل لنمو الأعمال" />
-          <span>وصل لنمو الأعمال</span>
+          <span class="brand-name">
+            <span class="brand-ar">وصل</span>
+            <span class="brand-en">Wasl</span>
+          </span>
         </a>
 
         <button
-          class="menu-toggle"
+          class="many-toggle"
           type="button"
           aria-label="فتح القائمة"
-          aria-controls="site-nav"
+          aria-controls="many-drawer"
           aria-expanded="false"
-          data-menu-toggle
+          data-many-toggle
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span class="many-toggle-text">Many</span>
+          <span class="many-toggle-dot" aria-hidden="true"></span>
         </button>
-
-        <nav class="site-nav" id="site-nav" aria-label="التنقل الرئيسي" data-site-nav>
-          <a href="#home">البداية</a>
-          <a href="story.html">قصتنا</a>
-          <a href="#journey">رحلتك مع وصل</a>
-          <a href="#system">منظومة وصل</a>
-          <a href="services.html">خدماتنا</a>
-          <a class="nav-cta" href="#start">ابدأ رحلتك</a>
-        </nav>
       </div>
     </header>
 
+    <!-- ═══════════════════════════════════════════════════════════
+         Many Drawer (Off-canvas navigation)
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="many-overlay" data-many-overlay aria-hidden="true"></div>
+    <nav
+      class="many-drawer"
+      id="many-drawer"
+      aria-label="القائمة الرئيسية"
+      data-many-drawer
+    >
+      <div class="many-drawer-head">
+        <span class="many-drawer-brand">
+          <img src="assets/images/only_logo.png" alt="" aria-hidden="true" />
+          <span>وصل</span>
+        </span>
+        <button class="many-close" type="button" aria-label="إغلاق القائمة" data-many-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <ul class="many-drawer-links">
+        <li><a href="#home" data-many-link><span class="many-num">01</span>البداية</a></li>
+        <li><a href="#why" data-many-link><span class="many-num">02</span>ربما تساءلت</a></li>
+        <li><a href="#moments" data-many-link><span class="many-num">03</span>لحظات نصنع فيها الفرق</a></li>
+        <li><a href="#transform" data-many-link><span class="many-num">04</span>كيف تتحول فكرتك لأثر</a></li>
+        <li><a href="#system" data-many-link><span class="many-num">05</span>منظومة وصل</a></li>
+        <li><a href="services.html" data-many-link><span class="many-num">06</span>خدماتنا</a></li>
+      </ul>
+      <div class="many-drawer-foot">
+        <a href="mailto:hello@wasl.example">hello@wasl.example</a>
+      </div>
+    </nav>
+
     <main>
       <!-- ═══════════════════════════════════════════════════════════
-           القسم الأول — الهيرو: الفكرة ← الأثر
+           القسم الأول — الهيرو: الفكرة × الأثر (مبسّط)
            ═══════════════════════════════════════════════════════════ -->
-      <section class="hero section-dark" id="home" aria-labelledby="hero-title">
-        <!-- Grid dots background -->
+      <section class="hero hero-simple section-dark" id="home" aria-labelledby="hero-title">
         <div class="hero-grid-bg" aria-hidden="true"></div>
 
-        <div class="container hero-layout-new">
-          <!-- The Idea → Impact composition -->
-          <div class="hero-bridge" data-hero-bridge>
-            <!-- الفكرة -->
-            <div class="hero-endpoint hero-idea" data-hero-idea>
-              <span class="hero-endpoint-label">الفكرة</span>
-              <div class="hero-endpoint-dot"></div>
-            </div>
+        <div class="container hero-simple-layout">
+          <h1 id="hero-title" class="hero-title-row" data-hero-row>
+            <span class="hero-word hero-word-idea" data-hero-word>الفكرة</span>
+            <span class="hero-word-logo" data-hero-word aria-hidden="true">
+              <img src="assets/images/only_logo.png" alt="" />
+            </span>
+            <span class="hero-word hero-word-impact" data-hero-word>الأثر</span>
+          </h1>
 
-            <!-- الخط الذهبي المتحرك -->
-            <div class="hero-connector" aria-hidden="true">
-              <svg class="hero-connector-svg" viewBox="0 0 600 120" preserveAspectRatio="none" fill="none">
-                <path
-                  class="hero-connector-glow"
-                  d="M0,60 C120,60 150,20 300,20 C450,20 480,60 600,60"
-                />
-                <path
-                  class="hero-connector-line"
-                  d="M0,60 C120,60 150,20 300,20 C450,20 480,60 600,60"
-                  data-hero-line
-                />
-              </svg>
-              <!-- وصل badge في المنتصف -->
-              <div class="hero-connector-badge" data-reveal>
-              <img src="assets/images/only_logo.png" alt="شعار وصل لنمو الأعمال" class="hero-badge-logo" />
-            </div>
-              <!-- Branch line going down -->
-              <div class="hero-connector-branch" data-hero-branch></div>
-            </div>
+          <p class="hero-simple-desc" data-hero-word>
+            الأثر الذي يبقى… لا يأتي صدفة. وبين الفكرة والأثر… هناك رحلة، تبدأ
+            بفهمٍ عميق، وتتشكل باستراتيجية واضحة، وتكتسب هويتها، وتُروى قصتها،
+            وتصل إلى جمهورها، وتستمر بمنظومة ذكية.
+          </p>
 
-            <!-- الأثر -->
-            <div class="hero-endpoint hero-impact" data-hero-impact>
-              <span class="hero-endpoint-label">الأثر</span>
-              <div class="hero-endpoint-dot"></div>
-            </div>
-          </div>
-
-          <!-- Hero Text Content -->
-          <div class="hero-text" data-hero-text>
-            <h1 id="hero-title" class="sr-only">الفكرة × الأثر</h1>
-            <p class="hero-lead" data-hero-lead>الأثر الذي يبقى… لا يأتي صدفة.</p>
-            <p class="hero-desc" data-hero-desc>
-              وبين الفكرة والأثر… هناك رحلة. رحلة تبدأ بفهمٍ عميق، وتتشكل
-              باستراتيجية واضحة، وتكتسب هويتها، وتُروى قصتها، وتصل إلى جمهورها،
-              وتستمر بمنظومة ذكية.
-            </p>
-            <div class="hero-actions" aria-label="إجراءات البداية">
-              <a class="button button-primary" href="#start">ابدأ رحلتك</a>
-              <a class="button button-secondary" href="#system">اكتشف منظومة وصل</a>
-            </div>
-          </div>
-
-          <!-- Promise (merged into hero) -->
-          <div class="hero-promise" data-hero-promise>
-            <p>
-              في وصل، لا نقدم خدمات منفصلة… بل نبني رحلة متكاملة تُحوّل
-              <strong>الأفكار</strong> إلى <strong>علامات</strong>، والعلامات إلى
-              <strong>أثر</strong>.
-            </p>
+          <div class="hero-simple-actions" data-hero-word>
+            <button type="button" class="button button-primary" data-open-consult>
+              احصل على استشارة مجانية
+            </button>
           </div>
         </div>
-
-        <!-- Scroll indicator -->
-        <div class="hero-scroll-hint" aria-hidden="true" data-hero-scroll>
-          <span>اكتشف القصة</span>
-          <div class="scroll-arrow"></div>
-        </div>
-      </section>
-
-      <section class="story-cinema" id="story" aria-labelledby="story-title">
-        <h2 id="story-title" class="sr-only">قصتنا</h2>
-
-        <!-- Ambient background -->
-        <div class="story-ambient" aria-hidden="true">
-          <div class="story-ambient-orb story-orb-1"></div>
-          <div class="story-ambient-orb story-orb-2"></div>
-        </div>
-
-        <!-- Side dots navigation -->
-        <nav class="story-dots" aria-label="أجزاء القصة">
-          <button class="story-dot is-active" data-story-go="0" aria-label="البداية">
-            <span class="story-dot-ring"></span>
-          </button>
-          <button class="story-dot" data-story-go="1" aria-label="الرؤية">
-            <span class="story-dot-ring"></span>
-          </button>
-          <button class="story-dot" data-story-go="2" aria-label="الإيمان">
-            <span class="story-dot-ring"></span>
-          </button>
-        </nav>
-
-        <!-- Scenes -->
-        <div class="story-stage" data-story-stage>
-
-          <!-- Scene 1: البداية -->
-          <div class="story-scene is-active" data-story-scene="0">
-            <div class="story-scene-inner">
-              <p class="story-whisper">في زوايا الجامعة، بين مقاعد الدراسة وأحاديث الممرات…</p>
-              <p class="story-whisper story-whisper-delay-1">كان هناك صوت يتكرر:</p>
-
-              <div class="story-strikes">
-                <p class="story-strike" data-strike>هذا التخصص لن يصنع فرقًا.</p>
-                <p class="story-strike" data-strike>مجالكم مجرد أدوات.</p>
-                <p class="story-strike" data-strike>لا مستقبل حقيقي لما تفعلون.</p>
-              </div>
-
-              <p class="story-golden-moment">لكننا كنا نرى شيئًا مختلفًا.</p>
-            </div>
-          </div>
-
-          <!-- Scene 2: الرؤية -->
-          <div class="story-scene" data-story-scene="1">
-            <div class="story-scene-inner">
-              <p class="story-whisper">كنا نرى أن وراء كل فكرة قصة،</p>
-              <p class="story-whisper story-whisper-delay-1">وأن وراء كل مشروع قيمة،</p>
-              <p class="story-whisper story-whisper-delay-2">وأن المشكلة لم تكن يومًا في الإمكانيات…</p>
-              <p class="story-whisper story-whisper-delay-3 story-emphasis">بل في الطريقة التي يرى بها العالم هذه الإمكانيات.</p>
-
-              <div class="story-birth">
-                <p class="story-golden-moment">من تلك اللحظة وُلدت فكرة وصل.</p>
-                <p class="story-glow-text">فكرة تؤمن أن الأشياء العظيمة لا تختفي لأنها ضعيفة، بل لأنها لم تجد الطريقة الصحيحة لتصل.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Scene 3: الإيمان -->
-          <div class="story-scene" data-story-scene="2">
-            <div class="story-scene-inner">
-              <p class="story-question-line"><span class="q-text">كيف تتحول الفكرة إلى رسالة؟</span></p>
-              <p class="story-question-line"><span class="q-text">كيف تتحول الرسالة إلى تجربة؟</span></p>
-              <p class="story-question-line"><span class="q-text">كيف تتحول التجربة إلى أثر يبقى؟</span></p>
-
-              <p class="story-whisper story-whisper-delay-2">لم نؤسس وصل لنقدم خدمات فقط. أسسناها لأننا نؤمن أن لكل مشروع قيمة تستحق أن تُرى.</p>
-
-              <p class="story-finale">ومن هنا بدأت وصل… رحلة صناعة الأثر.</p>
-              <div style="margin-top: 3rem; text-align: center;">
-                <a href="story.html" class="primary-btn" style="background: var(--accent); color: var(--primary); padding: 12px 32px; border-radius: 30px; text-decoration: none; font-weight: 700; display: inline-block; transition: transform 0.3s ease;">
-                  عيش تجربة قصتنا الكاملة
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Subtle section label -->
-        <span class="story-section-label" aria-hidden="true">قصتنا</span>
       </section>
 
       <!-- ═══════════════════════════════════════════════════════════
-           القسم الثالث — الرحلة: خمس مراحل
+           القسم الثاني — ربما تساءلت
            ═══════════════════════════════════════════════════════════ -->
-      <section class="journey section-dark" id="journey" aria-labelledby="journey-title">
+      <section class="why section-dark" id="why" aria-labelledby="why-title">
+        <div class="why-ambient" aria-hidden="true">
+          <div class="why-orb why-orb-1"></div>
+          <div class="why-orb why-orb-2"></div>
+        </div>
+
+        <div class="container why-layout">
+          <div class="section-heading why-heading" data-reveal>
+            <p class="eyebrow">ربما تساءلت</p>
+            <h2 id="why-title">لماذا نفكر بهذه الطريقة؟</h2>
+          </div>
+
+          <div class="why-scroll" data-why-scroll>
+            <p class="why-p" data-why-p>لأننا كنا هناك.</p>
+            <p class="why-p" data-why-p>
+              في مكانٍ كانت فيه الأفكار الجيدة تُهمَل… ليس لأنها غير مهمة، بل
+              لأنها لم تُعرض كما يجب.
+            </p>
+            <p class="why-p why-p-quote" data-why-p>
+              في الجامعة، بين حديثٍ عابر ونظرة تقليل، تكرر نفس الصوت:
+              <span class="why-quote">"هذا المجال لا يصنع فرقًا."</span>
+              <span class="why-quote">"أنتم فقط تنفذون."</span>
+              <span class="why-quote">"القيمة ليست هنا."</span>
+            </p>
+            <p class="why-p why-p-strong" data-why-p>لكن ما رأيناه كان مختلفًا تمامًا.</p>
+            <p class="why-p" data-why-p>
+              رأينا مشاريع ذكية لا تُفهم، وأفكار قوية لا تصل، وأشخاصًا لديهم
+              قيمة… لا يعرفها أحد.
+            </p>
+            <p class="why-p why-p-strong" data-why-p>حينها أدركنا:</p>
+            <p class="why-p" data-why-p>المشكلة لم تكن يومًا في الإمكانيات…</p>
+            <p class="why-p why-p-gold" data-why-p>
+              بل في الطريقة التي تظهر بها هذه الإمكانيات للعالم.
+            </p>
+            <p class="why-p why-p-final" data-why-p>ومن هنا وُلدت وصل.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════
+           القسم الثالث — لحظات نصنع فيها الفرق
+           ═══════════════════════════════════════════════════════════ -->
+      <section class="moments section-light" id="moments" aria-labelledby="moments-title">
         <div class="container">
           <div class="section-heading" data-reveal>
-            <div class="gl-node journey-entry-node" aria-hidden="true"></div>
-            <p class="eyebrow">رحلتك مع وصل</p>
-            <h2 id="journey-title">خمس مراحل تنقل فكرتك من الوضوح إلى الأثر.</h2>
+            <p class="eyebrow">أرقام تتحدث عنا</p>
+            <h2 id="moments-title">لحظات نصنع فيها الفرق.</h2>
           </div>
+        </div>
 
-          <!-- Horizontal Journey Path -->
-          <div class="journey-path" data-journey-path>
-            <div class="journey-path-track" aria-hidden="true">
-              <svg class="journey-path-svg" viewBox="0 0 1000 80" preserveAspectRatio="none" fill="none">
-                <path
-                  class="journey-path-glow"
-                  d="M0,40 C100,40 100,20 200,20 C300,20 300,60 400,60 C500,60 500,20 600,20 C700,20 700,60 800,60 C900,60 900,40 1000,40"
-                />
-                <path
-                  class="journey-path-line"
-                  d="M0,40 C100,40 100,20 200,20 C300,20 300,60 400,60 C500,60 500,20 600,20 C700,20 700,60 800,60 C900,60 900,40 1000,40"
-                  data-journey-line
-                />
-              </svg>
-            </div>
-
-            <!-- 5 Nodes -->
-            <div class="journey-nodes">
-              <button class="journey-node is-active" data-journey-node="0" aria-label="المرحلة الأولى: نكتشف الحكاية">
-                <span class="journey-node-num">01</span>
-                <span class="journey-node-name">نكتشف الحكاية</span>
-                <div class="journey-node-dot"></div>
-              </button>
-              <button class="journey-node" data-journey-node="1" aria-label="المرحلة الثانية: نبني شخصيتك">
-                <span class="journey-node-num">02</span>
-                <span class="journey-node-name">نبني شخصيتك</span>
-                <div class="journey-node-dot"></div>
-              </button>
-              <button class="journey-node" data-journey-node="2" aria-label="المرحلة الثالثة: نروي قصتك">
-                <span class="journey-node-num">03</span>
-                <span class="journey-node-name">نروي قصتك</span>
-                <div class="journey-node-dot"></div>
-              </button>
-              <button class="journey-node" data-journey-node="3" aria-label="المرحلة الرابعة: نفتح طريق الوصول">
-                <span class="journey-node-num">04</span>
-                <span class="journey-node-name">نفتح طريق الوصول</span>
-                <div class="journey-node-dot"></div>
-              </button>
-              <button class="journey-node" data-journey-node="4" aria-label="المرحلة الخامسة: نبني ما يستمر">
-                <span class="journey-node-num">05</span>
-                <span class="journey-node-name">نبني ما يستمر</span>
-                <div class="journey-node-dot"></div>
-              </button>
-            </div>
-          </div>
-
-          <!-- Journey Detail Cards -->
-          <div class="journey-details" data-journey-details>
-            <article class="journey-detail is-active" data-journey-detail="0">
-              <p class="journey-detail-intro">كل مشروع يبدأ بقصة… ونحن نبدأ بالاستماع.</p>
-              <p>
-                نفهم مشروعك، رؤيتك، أهدافك، والتحديات التي تواجهها. نبحث في
-                جمهورك والسوق، ونكتشف الفرصة والقصة التي تستحق أن تظهر.
-              </p>
-              <p class="journey-detail-note">لأن الطريق الصحيح يبدأ عندما نعرف أين نقف.</p>
+        <div class="moments-track-wrap">
+          <div class="moments-track" data-moments-track>
+            <article class="moment-card" data-reveal>
+              <span class="moment-num">39</span>
+              <p>علامة أعادت اكتشاف مكانتها بين جمهورها.</p>
             </article>
-
-            <article class="journey-detail" data-journey-detail="1">
-              <p class="journey-detail-intro">بعد أن نفهم قصتك… نمنحها شكلًا يُرى.</p>
-              <p>
-                نحوّل قيمتك إلى هوية تعبر عنك، ونصنع لغة بصرية تجعل الناس
-                يشعرون بشخصية مشروعك من أول نظرة.
-              </p>
-              <p class="journey-detail-note">لأن الهوية ليست ما تراه فقط… بل ما يتذكره الناس عنك.</p>
+            <article class="moment-card" data-reveal>
+              <span class="moment-num">15</span>
+              <p>فكرة تسير اليوم بثقة نحو أثرها الحقيقي.</p>
             </article>
-
-            <article class="journey-detail" data-journey-detail="2">
-              <p class="journey-detail-intro">الفكرة التي لا تُروى… قد لا تصل.</p>
-              <p>
-                نحوّل جوهر مشروعك إلى محتوى يلامس الناس، ونبحث عن الزاوية التي
-                تجعل الجمهور يتوقف، والقصة التي تجعله يهتم.
-              </p>
-              <p class="journey-detail-note">لأن المحتوى الحقيقي لا يملأ المساحات… بل يترك أثرًا.</p>
+            <article class="moment-card" data-reveal>
+              <span class="moment-num">79</span>
+              <p>قصة وجدت طريقها إلى قلب جمهورها.</p>
             </article>
-
-            <article class="journey-detail" data-journey-detail="3">
-              <p class="journey-detail-intro">أن تُرى خطوة… وأن تصل إلى الشخص الصحيح خطوة أخرى.</p>
-              <p>
-                نبني استراتيجيات تسويقية تربطك بجمهورك المناسب، ونصنع الحملات
-                التي تجعل رسالتك تصل في المكان والوقت المناسب.
-              </p>
-              <p class="journey-detail-note">لأن النجاح ليس في عدد من يشاهدونك… بل في من يفهمون قيمتك.</p>
-            </article>
-
-            <article class="journey-detail" data-journey-detail="4">
-              <p class="journey-detail-intro">الأثر لا يعتمد على لحظة… بل على منظومة.</p>
-              <p>
-                نحوّل حضورك الرقمي إلى تجربة متكاملة، من تحسين الظهور وبناء
-                صفحات الهبوط إلى تطوير التطبيقات وأتمتة الأعمال.
-              </p>
-              <p class="journey-detail-note">لأن الأثر الحقيقي ليس ما يحدث مرة… بل ما يستمر بعد ذلك.</p>
+            <article class="moment-card" data-reveal>
+              <span class="moment-num">26</span>
+              <p>منظومة تُبنى اليوم لتصنع نموًا يستمر.</p>
             </article>
           </div>
         </div>
       </section>
 
       <!-- ═══════════════════════════════════════════════════════════
-           القسم الرابع — منظومة وصل
+           القسم الرابع — كيف تتحول فكرتك إلى أثر
+           ═══════════════════════════════════════════════════════════ -->
+      <section class="transform section-dark" id="transform" aria-labelledby="transform-title">
+        <h2 id="transform-title" class="sr-only">كيف تتحول فكرتك إلى أثر</h2>
+
+        <div class="container transform-stage" data-transform-stage>
+          <!-- 5 scattered icons -->
+          <div class="transform-item" data-transform-item="0" data-scatter-x="8" data-scatter-y="15" data-scatter-r="-12">
+            <div class="transform-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none">
+                <circle cx="24" cy="24" r="10" stroke="currentColor" stroke-width="2"/>
+                <circle cx="24" cy="24" r="3.5" fill="currentColor"/>
+                <path d="M6 24c4-9 12-14 18-14s14 5 18 14c-4 9-12 14-18 14S10 33 6 24Z" stroke="currentColor" stroke-width="1.6"/>
+              </svg>
+            </div>
+            <div class="transform-copy">
+              <span class="transform-step-num">01</span>
+              <h3>نكتشف الحقيقة</h3>
+              <p>كل مشروع يبدأ بقصة… ونحن نبدأ بالاستماع. نفهم مشروعك، رؤيتك، وأهدافك، ونكتشف الفرصة التي تستحق أن تظهر.</p>
+            </div>
+          </div>
+
+          <div class="transform-item" data-transform-item="1" data-scatter-x="70" data-scatter-y="8" data-scatter-r="10">
+            <div class="transform-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none">
+                <circle cx="24" cy="24" r="19" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M24 8v8M24 32v8M8 24h8M32 24h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <circle cx="24" cy="24" r="4.5" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="transform-copy">
+              <span class="transform-step-num">02</span>
+              <h3>نبني ما يُرى ويُذكر</h3>
+              <p>نحوّل قيمتك إلى هوية تعبر عنك، ونصنع لغة بصرية تجعل الناس يتذكرون مشروعك من أول نظرة.</p>
+            </div>
+          </div>
+
+          <div class="transform-item" data-transform-item="2" data-scatter-x="42" data-scatter-y="72" data-scatter-r="-8">
+            <div class="transform-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none">
+                <path d="M10 34V14a4 4 0 0 1 4-4h12l12 12v12a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4Z" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M26 10v10h10" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M16 24h10M16 29h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="transform-copy">
+              <span class="transform-step-num">03</span>
+              <h3>نحوّل القيمة إلى قصة</h3>
+              <p>نبحث عن الزاوية التي تجعل الجمهور يتوقف، والقصة التي تجعله يهتم ويتذكرك.</p>
+            </div>
+          </div>
+
+          <div class="transform-item" data-transform-item="3" data-scatter-x="82" data-scatter-y="60" data-scatter-r="14">
+            <div class="transform-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none">
+                <circle cx="14" cy="34" r="4" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="34" cy="14" r="4" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M17 31 31 17" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M24 10h10v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="transform-copy">
+              <span class="transform-step-num">04</span>
+              <h3>نصل بدقة</h3>
+              <p>نبني استراتيجيات تسويقية تربطك بجمهورك المناسب، وحملات تجعل رسالتك تصل في الوقت الصحيح.</p>
+            </div>
+          </div>
+
+          <div class="transform-item" data-transform-item="4" data-scatter-x="12" data-scatter-y="55" data-scatter-r="9">
+            <div class="transform-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none">
+                <circle cx="24" cy="10" r="4" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="10" cy="34" r="4" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="38" cy="34" r="4" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M22 13.5 12 30.5M26 13.5l10 17M14 34h20" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="transform-copy">
+              <span class="transform-step-num">05</span>
+              <h3>نبني ما يستمر</h3>
+              <p>نحوّل حضورك الرقمي إلى منظومة متكاملة تعمل بذكاء واستمرارية بعد أن ننتهي منها.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════
+           القسم الخامس — منظومة وصل
            ═══════════════════════════════════════════════════════════ -->
       <section class="system section-light" id="system" aria-labelledby="system-title">
         <div class="container">
@@ -396,7 +349,7 @@
       </section>
 
       <!-- ═══════════════════════════════════════════════════════════
-           القسم الخامس — الخدمات: شجرة متفرعة
+           القسم السادس — الخدمات: شجرة متفرعة
            ═══════════════════════════════════════════════════════════ -->
       <section class="services section-soft" id="services" aria-labelledby="services-title">
         <div class="container">
@@ -523,7 +476,7 @@
       </section>
 
       <!-- ═══════════════════════════════════════════════════════════
-           القسم السادس — ابدأ رحلتك (CTA)
+           القسم السابع — ابدأ رحلتك (CTA)
            ═══════════════════════════════════════════════════════════ -->
       <section class="final-cta section-dark" id="start" aria-labelledby="start-title">
         <div class="container final-cta-layout" data-reveal>
@@ -567,8 +520,9 @@
 
         <nav class="footer-nav" aria-label="روابط الفوتر">
           <a href="#home">البداية</a>
-          <a href="#story">قصتنا</a>
-          <a href="#journey">رحلتك مع وصل</a>
+          <a href="#why">ربما تساءلت</a>
+          <a href="#moments">لحظات نصنع فيها الفرق</a>
+          <a href="#transform">كيف تتحول فكرتك لأثر</a>
           <a href="#system">منظومة وصل</a>
           <a href="#services">خدماتنا</a>
         </nav>
@@ -584,6 +538,45 @@
         <p class="copyright">© 2026 وصل لنمو الأعمال. جميع الحقوق محفوظة.</p>
       </div>
     </footer>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         Consultation Modal
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="consult-overlay" data-consult-overlay aria-hidden="true"></div>
+    <div
+      class="consult-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="consult-title"
+      data-consult-modal
+    >
+      <button class="consult-close" type="button" aria-label="إغلاق النافذة" data-consult-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="consult-head">
+        <p class="eyebrow">احجز وقتك</p>
+        <h3 id="consult-title">احصل على استشارة مجانية</h3>
+        <p class="consult-sub">أخبرنا القليل عن فكرتك، ونعود إليك في أقرب وقت.</p>
+      </div>
+      <form class="consult-form" data-consult-form>
+        <label class="consult-field">
+          <span>الاسم</span>
+          <input type="text" name="name" placeholder="اسمك الكامل" required />
+        </label>
+        <label class="consult-field">
+          <span>البريد الإلكتروني أو رقم الهاتف</span>
+          <input type="text" name="contact" placeholder="example@mail.com / 05xxxxxxxx" required />
+        </label>
+        <label class="consult-field">
+          <span>ملاحظة (اختياري)</span>
+          <textarea name="note" rows="3" placeholder="حدّثنا قليلاً عن فكرتك أو مشروعك..."></textarea>
+        </label>
+        <button type="submit" class="button button-primary consult-submit">إرسال الطلب</button>
+        <p class="consult-success" data-consult-success aria-live="polite">
+          تم استلام طلبك بنجاح. سنتواصل معك قريبًا. ✨
+        </p>
+      </form>
+    </div>
 
     <script src="js/main.js"></script>
   </body>

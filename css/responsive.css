@@ -3,79 +3,28 @@
    ===================================================================== */
 
 @media (max-width: 900px) {
-  .menu-toggle {
-    display: inline-block;
-  }
-
-  .site-nav {
-    position: fixed;
-    inset: 78px 16px auto;
-    display: none;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 18px;
-    border: 1px solid rgba(245, 247, 249, 0.16);
-    border-radius: var(--radius-sm);
-    background: rgba(0, 29, 83, 0.96);
-    box-shadow: var(--shadow-deep);
-  }
-
-  body.menu-open .site-nav {
-    display: flex;
-  }
-
-  /* Hero */
-  .hero-bridge {
+  /* Why section layout */
+  .why-layout {
     grid-template-columns: 1fr;
-    gap: 20px;
-    text-align: center;
+    gap: 32px;
   }
 
-  .hero-connector {
-    height: 80px;
+  .why-heading {
+    position: static;
   }
 
-  .hero-endpoint-label {
-    font-size: clamp(2rem, 5vw, 3rem);
+  .why-scroll {
+    max-height: none;
+    overflow-y: visible;
+    padding-inline-end: 0;
   }
 
-  /* Story */
-  .story-progress {
-    padding: 0 16px;
-    height: 64px;
+  /* Transform section items */
+  .transform-item {
+    gap: 16px;
   }
 
-  .story-tab {
-    padding: 8px 12px;
-  }
-
-  .story-tab-label {
-    font-size: 0.72rem;
-  }
-
-  /* Journey */
-  .journey-nodes {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 4px;
-  }
-
-  .journey-node-name {
-    font-size: 0.75rem;
-  }
-
-  .journey-node-num {
-    font-size: 0.75rem;
-  }
-
-  .journey-path-track {
-    display: none;
-  }
-
-  .journey-detail {
-    padding: 20px;
-  }
-
-  /* System */
+  /* System cards */
   .system-cards {
     grid-template-columns: 1fr;
     gap: 12px;

@@ -1,14 +1,16 @@
 /* =====================================================================
    وصل لنمو الأعمال — main.js
-   إعادة كتابة كاملة — فلسفة "الخط الذي يصل"
+   إعادة كتابة كاملة v2 — فلسفة "الخط الذي يصل"
    ===================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
   initHeaderScroll();
-  initMobileMenu();
-  initHeroSequence();
-  initStoryCard();
-  initJourneyPath();
+  initManyDrawer();
+  initConsultModal();
+  initHeroSimple();
+  initWhyScroll();
+  initMomentsAutoScroll();
+  initTransformScatter();
   initSystemCards();
   initRevealOnScroll();
   initSmoothAnchors();
@@ -31,25 +33,29 @@ function initHeaderScroll() {
 }
 
 /* ------------------------------------------------------------------
-   2. Mobile menu
+   2. Many Drawer (off-canvas navigation)
    ------------------------------------------------------------------ */
-function initMobileMenu() {
-  const toggle = document.querySelector("[data-menu-toggle]");
-  const nav = document.querySelector("[data-site-nav]");
-  if (!toggle || !nav) return;
+function initManyDrawer() {
+  const toggle = document.querySelector("[data-many-toggle]");
+  const drawer = document.querySelector("[data-many-drawer]");
+  const overlay = document.querySelector("[data-many-overlay]");
+  const closeBtn = document.querySelector("[data-many-close]");
+  if (!toggle || !drawer || !overlay) return;
 
   const open = () => {
     toggle.setAttribute("aria-expanded", "true");
-    toggle.setAttribute("aria-label", "إغلاق القائمة");
-    document.body.classList.add("menu-open");
-    nav.classList.add("is-open");
+    drawer.classList.add("is-open");
+    overlay.classList.add("is-open");
+    overlay.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
   };
 
   const close = () => {
     toggle.setAttribute("aria-expanded", "false");
-    toggle.setAttribute("aria-label", "فتح القائمة");
-    document.body.classList.remove("menu-open");
-    nav.classList.remove("is-open");
+    drawer.classList.remove("is-open");
+    overlay.classList.remove("is-open");
+    overlay.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
   };
 
   toggle.addEventListener("click", () => {
@@ -57,22 +63,15 @@ function initMobileMenu() {
     isOpen ? close() : open();
   });
 
-  nav.querySelectorAll("a").forEach((link) => {
+  if (closeBtn) closeBtn.addEventListener("click", close);
+  overlay.addEventListener("click", close);
+
+  drawer.querySelectorAll("[data-many-link]").forEach((link) => {
     link.addEventListener("click", close);
   });
 
-  document.addEventListener("click", (e) => {
-    if (
-      document.body.classList.contains("menu-open") &&
-      !nav.contains(e.target) &&
-      !toggle.contains(e.target)
-    ) {
-      close();
-    }
-  });
-
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && document.body.classList.contains("menu-open")) {
+    if (e.key === "Escape" && drawer.classList.contains("is-open")) {
       close();
       toggle.focus();
     }
@@ -80,267 +79,224 @@ function initMobileMenu() {
 }
 
 /* ------------------------------------------------------------------
-   3. Hero Animation Sequence
-   الفكرة → خط ذهبي → الأثر → نص → أزرار → وعد
+   3. Consultation Modal
    ------------------------------------------------------------------ */
-function initHeroSequence() {
-  const idea = document.querySelector("[data-hero-idea]");
-  const impact = document.querySelector("[data-hero-impact]");
-  const line = document.querySelector("[data-hero-line]");
-  const badge = document.querySelector("[data-hero-badge]");
-  const branch = document.querySelector("[data-hero-branch]");
-  const lead = document.querySelector("[data-hero-lead]");
-  const desc = document.querySelector("[data-hero-desc]");
-  const promise = document.querySelector("[data-hero-promise]");
+function initConsultModal() {
+  const openTriggers = document.querySelectorAll("[data-open-consult]");
+  const modal = document.querySelector("[data-consult-modal]");
+  const overlay = document.querySelector("[data-consult-overlay]");
+  const closeBtn = document.querySelector("[data-consult-close]");
+  const form = document.querySelector("[data-consult-form]");
+  const successMsg = document.querySelector("[data-consult-success]");
+  if (!modal || !overlay) return;
 
-  if (!idea || !impact || !line) return;
+  const open = () => {
+    modal.classList.add("is-open");
+    overlay.classList.add("is-open");
+    overlay.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    const firstInput = modal.querySelector("input");
+    if (firstInput) setTimeout(() => firstInput.focus(), 300);
+  };
+
+  const close = () => {
+    modal.classList.remove("is-open");
+    overlay.classList.remove("is-open");
+    overlay.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  };
+
+  openTriggers.forEach((btn) => btn.addEventListener("click", open));
+  if (closeBtn) closeBtn.addEventListener("click", close);
+  overlay.addEventListener("click", close);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("is-open")) close();
+  });
+
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (successMsg) {
+        successMsg.classList.add("is-visible");
+        setTimeout(() => {
+          form.reset();
+          close();
+          successMsg.classList.remove("is-visible");
+        }, 2200);
+      }
+    });
+  }
+}
+
+/* ------------------------------------------------------------------
+   4. Hero Simple — reveal sequence: الفكرة → شعار → الأثر → نص → زر
+   ------------------------------------------------------------------ */
+function initHeroSimple() {
+  const words = document.querySelectorAll("[data-hero-word]");
+  if (!words.length) return;
 
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   if (prefersReduced) {
-    // Show everything instantly
-    [idea, impact].forEach(el => el.classList.add("is-visible"));
-    line.classList.add("is-drawn");
-    if (badge) badge.classList.add("is-visible");
-    if (branch) branch.classList.add("is-visible");
-    if (lead) lead.classList.add("is-visible");
-    if (desc) desc.classList.add("is-visible");
-    const actions = document.querySelector(".hero-actions");
-    if (actions) actions.classList.add("is-visible");
-    if (promise) promise.classList.add("is-visible");
+    words.forEach((w) => w.classList.add("is-visible"));
     return;
   }
 
-  // Sequential animation
-  const sequence = [
-    { delay: 200,  action: () => idea.classList.add("is-visible") },
-    { delay: 600,  action: () => line.classList.add("is-drawn") },
-    { delay: 1400, action: () => impact.classList.add("is-visible") },
-    { delay: 1700, action: () => { if (badge) badge.classList.add("is-visible"); } },
-    { delay: 2000, action: () => { if (branch) branch.classList.add("is-visible"); } },
-    { delay: 2100, action: () => { if (lead) lead.classList.add("is-visible"); } },
-    { delay: 2400, action: () => { if (desc) desc.classList.add("is-visible"); } },
-    { delay: 2600, action: () => {
-      const actions = document.querySelector(".hero-actions");
-      if (actions) actions.classList.add("is-visible");
-    }},
-    { delay: 2900, action: () => { if (promise) promise.classList.add("is-visible"); } },
-  ];
-
-  sequence.forEach(({ delay, action }) => {
-    setTimeout(action, delay);
+  words.forEach((word, i) => {
+    setTimeout(() => word.classList.add("is-visible"), 200 + i * 220);
   });
 }
 
 /* ------------------------------------------------------------------
-   4. Story Cinema — word-by-word animation + scene navigation
+   5. Why Scroll — progressive paragraph reveal on internal scroll
    ------------------------------------------------------------------ */
+function initWhyScroll() {
+  const scrollBox = document.querySelector("[data-why-scroll]");
+  if (!scrollBox) return;
 
-/**
- * Split every story text element into individual word-<span>s.
- * Each span gets --wi (word index) so CSS can stagger the animation.
- */
-function prepareStoryWords() {
-  const TARGETS = [
-    ".story-whisper",
-    ".story-strike",
-    ".story-golden-moment",
-    ".story-glow-text",
-    ".story-finale",
-    ".q-text",
-  ];
+  const paragraphs = scrollBox.querySelectorAll("[data-why-p]");
+  if (!paragraphs.length) return;
 
-  const sel = TARGETS.map((s) => `.story-scene ${s}`).join(", ");
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  document.querySelectorAll(sel).forEach((el) => {
-    const text = el.textContent.trim();
-    if (!text) return;
-    const words = text.split(/\s+/);
-    el.innerHTML = words
-      .map((w, i) => `<span class="s-word" style="--wi:${i}">${w}</span>`)
-      .join(" ");
+  if (prefersReduced) {
+    paragraphs.forEach((p) => p.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        } else if (entry.boundingClientRect.top > 0) {
+          // Scrolled back up above viewport start — allow re-fade for a living feel
+          entry.target.classList.remove("is-visible");
+        }
+      });
+    },
+    { root: scrollBox, threshold: 0.55 }
+  );
+
+  paragraphs.forEach((p) => observer.observe(p));
+
+  // Reveal first paragraph immediately (in case it's already in view)
+  requestAnimationFrame(() => {
+    paragraphs.forEach((p) => {
+      const rect = p.getBoundingClientRect();
+      const boxRect = scrollBox.getBoundingClientRect();
+      if (rect.top < boxRect.bottom && rect.bottom > boxRect.top) {
+        p.classList.add("is-visible");
+      }
+    });
   });
 }
 
-/** Reset word animations so they replay when the scene is re-entered */
-function resetSceneWords(scene) {
-  scene.querySelectorAll(".s-word, .q-text::after").forEach((w) => {
-    w.style.animation = "none";
-    void w.offsetWidth; // flush
-    w.style.animation = "";
-  });
-  // Also reset q-text underlines via re-cloning the element
-  // (::after pseudo-elements can't be targeted in JS directly;
-  //  toggling a class forces a style recalculation)
-  scene.querySelectorAll(".q-text").forEach((qt) => {
-    qt.classList.remove("u-done");
-    void qt.offsetWidth;
-  });
+/* ------------------------------------------------------------------
+   6. Moments Auto-Scroll — لحظات نصنع فيها الفرق
+   يمرر تلقائيًا عند عدم كفاية العرض لإظهار كل البطاقات
+   ------------------------------------------------------------------ */
+function initMomentsAutoScroll() {
+  const track = document.querySelector("[data-moments-track]");
+  if (!track) return;
+
+  const wrap = track.parentElement;
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReduced) return;
+
+  let autoScrollTimer = null;
+  let isHovering = false;
+  let isInView = false;
+
+  const startAutoScroll = () => {
+    stopAutoScroll();
+    autoScrollTimer = setInterval(() => {
+      if (isHovering || !isInView) return;
+      const maxScroll = track.scrollWidth - wrap.clientWidth;
+      if (maxScroll <= 0) return;
+
+      if (wrap.scrollLeft >= maxScroll - 4) {
+        wrap.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        wrap.scrollBy({ left: wrap.clientWidth * 0.85, behavior: "smooth" });
+      }
+    }, 3200);
+  };
+
+  const stopAutoScroll = () => {
+    if (autoScrollTimer) clearInterval(autoScrollTimer);
+  };
+
+  // Only auto-scroll if content overflows
+  const checkOverflow = () => {
+    const overflows = track.scrollWidth > wrap.clientWidth + 8;
+    if (overflows) {
+      startAutoScroll();
+    } else {
+      stopAutoScroll();
+    }
+  };
+
+  wrap.addEventListener("mouseenter", () => (isHovering = true));
+  wrap.addEventListener("mouseleave", () => (isHovering = false));
+  wrap.addEventListener("touchstart", () => (isHovering = true), { passive: true });
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        isInView = entry.isIntersecting;
+      });
+    },
+    { threshold: 0.3 }
+  );
+  sectionObserver.observe(wrap);
+
+  window.addEventListener("resize", checkOverflow, { passive: true });
+  checkOverflow();
 }
 
-function initStoryCard() {
-  // 1. Pre-process: split all text into words
-  prepareStoryWords();
-
-  const stage = document.querySelector("[data-story-stage]");
+/* ------------------------------------------------------------------
+   7. Transform Scatter → Assembled List
+   الأيقونات موزعة عشوائياً، وعند التمرير العمودي تتجمع في قائمة
+   ------------------------------------------------------------------ */
+function initTransformScatter() {
+  const stage = document.querySelector("[data-transform-stage]");
   if (!stage) return;
 
-  const scenes = stage.querySelectorAll("[data-story-scene]");
-  const dots = document.querySelectorAll("[data-story-go]");
-  if (!scenes.length) return;
+  const items = stage.querySelectorAll("[data-transform-item]");
+  if (!items.length) return;
 
-  let current = 0;
-  let isTransitioning = false;
-
-  const goTo = (idx) => {
-    if (isTransitioning || idx === current || idx < 0 || idx >= scenes.length) return;
-    isTransitioning = true;
-
-    const outScene = scenes[current];
-    const inScene  = scenes[idx];
-
-    // Fade out current scene
-    outScene.style.transition = "opacity 450ms ease";
-    outScene.style.opacity = "0";
-    outScene.style.pointerEvents = "none";
-
-    setTimeout(() => {
-      outScene.classList.remove("is-active");
-      outScene.style.position = "absolute";
-      outScene.style.opacity = "";
-      outScene.style.transition = "";
-
-      // Reset word animations on the incoming scene so they replay
-      resetSceneWords(inScene);
-
-      inScene.style.opacity = "0";
-      inScene.classList.add("is-active");
-      inScene.style.position = "relative";
-
-      // Force reflow — kicks off CSS animations from frame 0
-      void inScene.offsetWidth;
-
-      inScene.style.transition = "opacity 550ms ease";
-      inScene.style.opacity = "1";
-
-      setTimeout(() => {
-        inScene.style.opacity = "";
-        inScene.style.transition = "";
-        isTransitioning = false;
-      }, 550);
-    }, 450);
-
-    dots.forEach((dot, i) => dot.classList.toggle("is-active", i === idx));
-    current = idx;
-  };
-
-  // Dot clicks
-  dots.forEach((dot) => {
-    dot.addEventListener("click", () => {
-      goTo(parseInt(dot.dataset.storyGo, 10));
-    });
+  items.forEach((item, i) => {
+    item.style.setProperty("--item-idx", i);
   });
 
-  // Keyboard arrows (only when story section is visible)
-  document.addEventListener("keydown", (e) => {
-    const story = document.getElementById("story");
-    if (!story) return;
-    const rect = story.getBoundingClientRect();
-    if (rect.top > window.innerHeight || rect.bottom < 0) return;
-    if (e.key === "ArrowLeft")  goTo(current + 1);
-    if (e.key === "ArrowRight") goTo(current - 1);
-  });
-
-  // Touch swipe
-  let touchStartX = 0;
-  stage.addEventListener("touchstart", (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
-  stage.addEventListener("touchend", (e) => {
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
-  }, { passive: true });
-}
-
-
-/* ------------------------------------------------------------------
-   5. Journey Path — horizontal path & node interaction
-   ------------------------------------------------------------------ */
-function initJourneyPath() {
-  const pathContainer = document.querySelector("[data-journey-path]");
-  const nodes = document.querySelectorAll("[data-journey-node]");
-  const details = document.querySelectorAll("[data-journey-detail]");
-  const pathLine = document.querySelector("[data-journey-line]");
-
-  if (!pathContainer || !nodes.length || !details.length) return;
-
-  // Activate node on click
-  const activateNode = (index) => {
-    nodes.forEach((n, i) => {
-      n.classList.toggle("is-active", i === index);
-    });
-    details.forEach((d, i) => {
-      d.classList.toggle("is-active", i === index);
-    });
-  };
-
-  nodes.forEach((node) => {
-    node.addEventListener("click", () => {
-      const idx = parseInt(node.dataset.journeyNode, 10);
-      activateNode(idx);
-    });
-  });
-
-  // Draw path line on scroll
-  if (pathLine) {
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (prefersReduced) {
-      pathLine.style.strokeDashoffset = "0";
-    } else {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              pathLine.style.strokeDashoffset = "0";
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.3 }
-      );
-      observer.observe(pathContainer);
-    }
-  }
-
-  // Auto-cycle nodes on scroll
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!prefersReduced) {
-    const journeySection = document.getElementById("journey");
-    if (journeySection) {
-      const scrollObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              // Stagger activate nodes
-              nodes.forEach((_, i) => {
-                setTimeout(() => {
-                  if (i < nodes.length) {
-                    activateNode(i);
-                  }
-                }, i * 800);
-              });
-              scrollObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.2 }
-      );
-      scrollObserver.observe(journeySection);
-    }
+  if (prefersReduced) {
+    stage.classList.add("is-assembled");
+    return;
   }
+
+  const section = stage.closest(".transform") || stage;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          stage.classList.add("is-assembled");
+        } else {
+          stage.classList.remove("is-assembled");
+        }
+      });
+    },
+    { threshold: 0.25 }
+  );
+
+  observer.observe(section);
 }
 
 /* ------------------------------------------------------------------
-   7. System Cards — connected interaction
+   8. System Cards — connected interaction
    ------------------------------------------------------------------ */
 function initSystemCards() {
   const cards = document.querySelectorAll("[data-system-card]");
@@ -367,7 +323,7 @@ function initSystemCards() {
 }
 
 /* ------------------------------------------------------------------
-   8. Services Trunk — scroll-driven draw
+   9. Services Trunk — scroll-driven draw
    ------------------------------------------------------------------ */
 function initServicesTrunkScroll() {
   const servicesSection = document.getElementById("services");
@@ -396,7 +352,7 @@ function initServicesTrunkScroll() {
 }
 
 /* ------------------------------------------------------------------
-   9. Reveal on Scroll (generic)
+   10. Reveal on Scroll (generic)
    ------------------------------------------------------------------ */
 function initRevealOnScroll() {
   const elements = document.querySelectorAll("[data-reveal]");
@@ -425,7 +381,7 @@ function initRevealOnScroll() {
 }
 
 /* ------------------------------------------------------------------
-   10. Smooth scrolling for anchor links
+   11. Smooth scrolling for anchor links
    ------------------------------------------------------------------ */
 function initSmoothAnchors() {
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
