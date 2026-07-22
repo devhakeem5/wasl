@@ -518,3 +518,154 @@ html[dir="rtl"] .many-drawer-links li {
   display: block;
 }
 
+/* =====================================================================
+   VIP CUSTOM CURSOR & AURA (Desktop / Mouse pointer)
+   ===================================================================== */
+@media (pointer: fine) {
+  .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px var(--accent-glow);
+    transition: transform 100ms ease, background-color 150ms ease;
+  }
+
+  .cursor-aura {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(241, 198, 125, 0.45);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    transition: width 250ms ease, height 250ms ease, border-color 250ms ease, background-color 250ms ease;
+    box-shadow: 0 0 16px rgba(241, 198, 125, 0.15);
+  }
+
+  .cursor-aura.is-hovered {
+    width: 56px;
+    height: 56px;
+    border-color: var(--accent);
+    background: rgba(241, 198, 125, 0.08);
+  }
+}
+
+/* =====================================================================
+   LUXURY BUTTON SHIMMER
+   ===================================================================== */
+.button-primary {
+  color: var(--primary);
+  background: linear-gradient(135deg, #F1C67D 0%, #F7DCA8 50%, #F1C67D 100%);
+  background-size: 200% auto;
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px rgba(241, 198, 125, 0.25);
+  transition: background-position 500ms ease, transform 200ms ease, box-shadow 300ms ease;
+}
+
+.button-primary:hover {
+  background-position: right center;
+  box-shadow: 0 16px 40px rgba(241, 198, 125, 0.4);
+  transform: translateY(-2px);
+}
+
+/* =====================================================================
+   VIP DRAWER CONCIERGE PANEL STATUS
+   ===================================================================== */
+.many-drawer-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--accent);
+  padding: 6px 14px;
+  background: rgba(241, 198, 125, 0.1);
+  border: 1px solid var(--gold-line);
+  border-radius: 20px;
+  margin-block-end: 24px;
+  width: fit-content;
+}
+
+.many-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px #10B981;
+}
+
+/* =====================================================================
+   VIP SERVICE SELECTION PILLS IN CONSULTATION MODAL
+   ===================================================================== */
+.consult-services-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-block-end: 8px;
+  display: block;
+}
+
+.consult-services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-block-end: 14px;
+}
+
+.service-pill {
+  font-size: 0.82rem;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(245, 247, 249, 0.18);
+  background: rgba(245, 247, 249, 0.05);
+  color: rgba(245, 247, 249, 0.8);
+  cursor: pointer;
+  transition: all 200ms ease;
+  user-select: none;
+}
+
+.service-pill:hover {
+  border-color: var(--gold-line);
+  color: var(--white);
+}
+
+.service-pill.is-selected {
+  background: rgba(241, 198, 125, 0.18);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+  box-shadow: 0 0 14px rgba(241, 198, 125, 0.2);
+}
+
+/* =====================================================================
+   DYNAMIC 3D CARD SPOTLIGHT OVERLAY
+   ===================================================================== */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(241, 198, 125, 0.12) 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+

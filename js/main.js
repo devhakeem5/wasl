@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initRevealOnScroll();
   initSmoothAnchors();
   initServicesTrunkScroll();
+  initVIPCursor();
+  initCardSpotlightAndTilt();
+  initServicePills();
 });
 
 /* ------------------------------------------------------------------
@@ -403,6 +406,109 @@ function initSmoothAnchors() {
         () => target.removeAttribute("tabindex"),
         { once: true }
       );
+    });
+  });
+}
+
+/* ------------------------------------------------------------------
+   12. VIP Custom Magnetic Cursor & Inertia Aura
+   ------------------------------------------------------------------ */
+function initVIPCursor() {
+  const dot = document.querySelector("[data-custom-cursor]");
+  const aura = document.querySelector("[data-cursor-aura]");
+  if (!dot || !aura) return;
+
+  if (window.matchMedia("(pointer: coarse)").matches) {
+    dot.style.display = "none";
+    aura.style.display = "none";
+    return;
+  }
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let auraX = mouseX;
+  let auraY = mouseY;
+
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+  });
+
+  function renderAura() {
+    auraX += (mouseX - auraX) * 0.16;
+    auraY += (mouseY - auraY) * 0.16;
+    aura.style.transform = `translate3d(${auraX}px, ${auraY}px, 0) translate(-50%, -50%)`;
+    requestAnimationFrame(renderAura);
+  }
+  requestAnimationFrame(renderAura);
+
+  const hoverSelectors = 'a, button, input, textarea, select, .moment-card, .system-card, .transform-item, .service-branch-card, .service-pill';
+  document.addEventListener("mouseover", (e) => {
+    if (e.target.closest(hoverSelectors)) {
+      aura.classList.add("is-hovered");
+    }
+  });
+  document.addEventListener("mouseout", (e) => {
+    if (e.target.closest(hoverSelectors)) {
+      aura.classList.remove("is-hovered");
+    }
+  });
+}
+
+/* ------------------------------------------------------------------
+   13. Card Spotlight & 3D Tilt Interactivity
+   ------------------------------------------------------------------ */
+function initCardSpotlightAndTilt() {
+  const cards = document.querySelectorAll(
+    ".moment-card, .system-card, .transform-item, .service-branch-card, .consult-modal"
+  );
+  if (!cards.length) return;
+
+  cards.forEach((card) => {
+    card.classList.add("spotlight-card");
+
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty("--mouse-x", `${x}px`);
+      card.style.setProperty("--mouse-y", `${y}px`);
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -5;
+      const rotateY = ((x - centerX) / centerX) * 5;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "";
+    });
+  });
+}
+
+/* ------------------------------------------------------------------
+   14. Service Pills Selection in Consultation Modal
+   ------------------------------------------------------------------ */
+function initServicePills() {
+  const pills = document.querySelectorAll("[data-consult-pills] .service-pill");
+  const hiddenInput = document.querySelector("[data-selected-services]");
+  if (!pills.length || !hiddenInput) return;
+
+  const selectedServices = new Set();
+
+  pills.forEach((pill) => {
+    pill.addEventListener("click", () => {
+      const service = pill.dataset.service;
+      if (selectedServices.has(service)) {
+        selectedServices.delete(service);
+        pill.classList.remove("is-selected");
+      } else {
+        selectedServices.add(service);
+        pill.classList.add("is-selected");
+      }
+      hiddenInput.value = Array.from(selectedServices).join(", ");
     });
   });
 }

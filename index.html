@@ -63,6 +63,10 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <div class="many-drawer-status">
+        <span class="many-status-dot" aria-hidden="true"></span>
+        <span>متاح للاستشارات | الرياض (GMT+3)</span>
+      </div>
       <ul class="many-drawer-links">
         <li><a href="#home" data-many-link><span class="many-num">01</span>البداية</a></li>
         <li><a href="#why" data-many-link><span class="many-num">02</span>ربما تساءلت</a></li>
@@ -559,6 +563,17 @@
         <p class="consult-sub">أخبرنا القليل عن فكرتك، ونعود إليك في أقرب وقت.</p>
       </div>
       <form class="consult-form" data-consult-form>
+        <div class="consult-field">
+          <span class="consult-services-title">الخدمة المطلوبة (يمكنك اختيار أكثر من خدمة)</span>
+          <div class="consult-services" data-consult-pills>
+            <button type="button" class="service-pill" data-service="بناء هوية واستراتيجية">بناء هوية واستراتيجية</button>
+            <button type="button" class="service-pill" data-service="تطوير متجر إلكتروني">تطوير متجر إلكتروني</button>
+            <button type="button" class="service-pill" data-service="صناعة محتوى وإعلام">صناعة محتوى وإعلام</button>
+            <button type="button" class="service-pill" data-service="إدارة حملات تسويقية">إدارة حملات تسويقية</button>
+            <button type="button" class="service-pill" data-service="استشارة نمو متكاملة">استشارة نمو متكاملة</button>
+          </div>
+          <input type="hidden" name="services" data-selected-services />
+        </div>
         <label class="consult-field">
           <span>الاسم</span>
           <input type="text" name="name" placeholder="اسمك الكامل" required />
@@ -577,6 +592,10 @@
         </p>
       </form>
     </div>
+
+    <!-- VIP Custom Magnetic Cursor -->
+    <div class="custom-cursor" data-custom-cursor aria-hidden="true"></div>
+    <div class="cursor-aura" data-cursor-aura aria-hidden="true"></div>
 
     <script src="js/main.js"></script>
   </body>
