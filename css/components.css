@@ -86,7 +86,9 @@
   height: 48px;
   border: 1px solid var(--gold-line);
   border-radius: var(--radius-sm);
-  object-fit: cover;
+  object-fit: contain;
+  padding: 4px;
+  background: rgba(0, 29, 83, 0.4);
 }
 
 .site-nav {
