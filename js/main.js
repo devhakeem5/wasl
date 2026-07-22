@@ -163,46 +163,54 @@ function initHeroSimple() {
 }
 
 /* ------------------------------------------------------------------
-   5. Why Scroll — progressive paragraph reveal on internal scroll
+   5. Why Scroll — Sticky Cinematic Narrative Chamber Switcher
    ------------------------------------------------------------------ */
 function initWhyScroll() {
-  const scrollBox = document.querySelector("[data-why-scroll]");
-  if (!scrollBox) return;
+  const section = document.querySelector(".why");
+  const acts = document.querySelectorAll("[data-narrative-act]");
+  const scrubberSteps = document.querySelectorAll("[data-why-step]");
+  if (!section || !acts.length) return;
 
-  const paragraphs = scrollBox.querySelectorAll("[data-why-p]");
-  if (!paragraphs.length) return;
+  const updateAct = (index) => {
+    acts.forEach((act, i) => {
+      act.classList.toggle("is-active", i === index);
+    });
+    scrubberSteps.forEach((step, i) => {
+      step.classList.toggle("is-active", i === index);
+    });
+  };
 
-  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const onScroll = () => {
+    const rect = section.getBoundingClientRect();
+    const sectionHeight = section.offsetHeight - window.innerHeight;
+    if (sectionHeight <= 0) return;
 
-  if (prefersReduced) {
-    paragraphs.forEach((p) => p.classList.add("is-visible"));
-    return;
-  }
+    const scrolled = -rect.top;
+    const progress = Math.max(0, Math.min(1, scrolled / sectionHeight));
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-        } else if (entry.boundingClientRect.top > 0) {
-          // Scrolled back up above viewport start — allow re-fade for a living feel
-          entry.target.classList.remove("is-visible");
-        }
-      });
-    },
-    { root: scrollBox, threshold: 0.55 }
-  );
+    let activeAct = 0;
+    if (progress > 0.62) {
+      activeAct = 2;
+    } else if (progress > 0.28) {
+      activeAct = 1;
+    } else {
+      activeAct = 0;
+    }
 
-  paragraphs.forEach((p) => observer.observe(p));
+    updateAct(activeAct);
+  };
 
-  // Reveal first paragraph immediately (in case it's already in view)
-  requestAnimationFrame(() => {
-    paragraphs.forEach((p) => {
-      const rect = p.getBoundingClientRect();
-      const boxRect = scrollBox.getBoundingClientRect();
-      if (rect.top < boxRect.bottom && rect.bottom > boxRect.top) {
-        p.classList.add("is-visible");
-      }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  scrubberSteps.forEach((step) => {
+    step.addEventListener("click", () => {
+      const stepIdx = parseInt(step.dataset.whyStep, 10);
+      const sectionTop = window.scrollY + section.getBoundingClientRect().top;
+      const sectionHeight = section.offsetHeight - window.innerHeight;
+      const targetScroll = sectionTop + (stepIdx / 2) * sectionHeight;
+
+      window.scrollTo({ top: targetScroll, behavior: "smooth" });
     });
   });
 }

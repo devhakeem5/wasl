@@ -114,40 +114,99 @@
            القسم الثاني — ربما تساءلت
            ═══════════════════════════════════════════════════════════ -->
       <section class="why section-dark" id="why" aria-labelledby="why-title">
+        <!-- Ambient cinematic lighting orbs -->
         <div class="why-ambient" aria-hidden="true">
           <div class="why-orb why-orb-1"></div>
           <div class="why-orb why-orb-2"></div>
+          <div class="why-beam-spotlight"></div>
         </div>
 
-        <div class="container why-layout">
-          <div class="section-heading why-heading" data-reveal>
-            <p class="eyebrow">ربما تساءلت</p>
-            <h2 id="why-title">لماذا نفكر بهذه الطريقة؟</h2>
+        <!-- Story Progress Scrubber Navigation (Interactive Control) -->
+        <div class="why-scrubber-wrap" aria-label="تنقل قصة النشأة">
+          <div class="why-scrubber">
+            <button type="button" class="scrubber-step is-active" data-why-step="0">
+              <span class="scrubber-dot"></span>
+              <span class="scrubber-label">01 الشرارة</span>
+            </button>
+            <div class="scrubber-line"></div>
+            <button type="button" class="scrubber-step" data-why-step="1">
+              <span class="scrubber-dot"></span>
+              <span class="scrubber-label">02 الحقيقة</span>
+            </button>
+            <div class="scrubber-line"></div>
+            <button type="button" class="scrubber-step" data-why-step="2">
+              <span class="scrubber-dot"></span>
+              <span class="scrubber-label">03 ولادة وصل</span>
+            </button>
           </div>
+        </div>
 
-          <div class="why-scroll" data-why-scroll>
-            <p class="why-p" data-why-p>لأننا كنا هناك.</p>
-            <p class="why-p" data-why-p>
-              في مكانٍ كانت فيه الأفكار الجيدة تُهمَل… ليس لأنها غير مهمة، بل
-              لأنها لم تُعرض كما يجب.
-            </p>
-            <p class="why-p why-p-quote" data-why-p>
-              في الجامعة، بين حديثٍ عابر ونظرة تقليل، تكرر نفس الصوت:
-              <span class="why-quote">"هذا المجال لا يصنع فرقًا."</span>
-              <span class="why-quote">"أنتم فقط تنفذون."</span>
-              <span class="why-quote">"القيمة ليست هنا."</span>
-            </p>
-            <p class="why-p why-p-strong" data-why-p>لكن ما رأيناه كان مختلفًا تمامًا.</p>
-            <p class="why-p" data-why-p>
-              رأينا مشاريع ذكية لا تُفهم، وأفكار قوية لا تصل، وأشخاصًا لديهم
-              قيمة… لا يعرفها أحد.
-            </p>
-            <p class="why-p why-p-strong" data-why-p>حينها أدركنا:</p>
-            <p class="why-p" data-why-p>المشكلة لم تكن يومًا في الإمكانيات…</p>
-            <p class="why-p why-p-gold" data-why-p>
-              بل في الطريقة التي تظهر بها هذه الإمكانيات للعالم.
-            </p>
-            <p class="why-p why-p-final" data-why-p>ومن هنا وُلدت وصل.</p>
+        <!-- Sticky Full-Viewport Narrative Chamber -->
+        <div class="why-sticky-viewport">
+          <div class="container why-narrative-container">
+            
+            <!-- Act 1: The Spark & Doubt -->
+            <article class="narrative-act act-1 is-active" data-narrative-act="0">
+              <div class="act-header">
+                <p class="eyebrow">ربما تساءلت</p>
+                <h2 id="why-title">لماذا نفكر بهذه الطريقة؟</h2>
+                <p class="act-subtitle">لأننا كنا هناك… في مكانٍ كانت فيه الأفكار الجيدة تُهمَل، ليس لأنها غير مهمة، بل لأنها لم تُعرض كما يجب.</p>
+              </div>
+
+              <div class="doubt-cards-grid">
+                <div class="doubt-card">
+                  <span class="doubt-icon">💬</span>
+                  <p>"هذا المجال لا يصنع فرقًا."</p>
+                </div>
+                <div class="doubt-card">
+                  <span class="doubt-icon">💬</span>
+                  <p>"أنتم فقط تنفذون."</p>
+                </div>
+                <div class="doubt-card">
+                  <span class="doubt-icon">💬</span>
+                  <p>"القيمة ليست هنا."</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Act 2: Perception Shift & Truth -->
+            <article class="narrative-act act-2" data-narrative-act="1">
+              <div class="act-header text-center">
+                <p class="eyebrow">انكشاف الحقيقة</p>
+                <h2>لكن ما رأيناه كان مختلفًا تمامًا.</h2>
+              </div>
+
+              <div class="revelation-pillars">
+                <div class="revelation-item">
+                  <span class="revelation-spark">✦</span>
+                  <p>رأينا مشاريع ذكية لا تُفهم</p>
+                </div>
+                <div class="revelation-item">
+                  <span class="revelation-spark">✦</span>
+                  <p>وأفكارًا قوية لا تصل</p>
+                </div>
+                <div class="revelation-item">
+                  <span class="revelation-spark">✦</span>
+                  <p>وأشخاصًا لديهم قيمة… لا يعرفها أحد</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Act 3: Revelation & Birth of Wasl -->
+            <article class="narrative-act act-3" data-narrative-act="2">
+              <div class="climax-narrative">
+                <p class="climax-lead">حينها أدركنا:</p>
+                <h2 class="climax-truth">
+                  المشكلة لم تكن يومًا في الإمكانيات…<br />
+                  <span class="gold-gradient-text">بل في الطريقة التي تظهر بها هذه الإمكانيات للعالم.</span>
+                </h2>
+                <div class="birth-badge">
+                  <span class="birth-spark">✨</span>
+                  <span class="birth-text">ومن هنا وُلدت وصل</span>
+                </div>
+              </div>
+            </article>
+
           </div>
         </div>
       </section>
