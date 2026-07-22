@@ -1,8 +1,136 @@
 /* =====================================================================
-   وصل — responsive.css (محدّث للتصميم الجديد)
+   VIP Mobile Display Controls & Hardware Performance Optimization
    ===================================================================== */
+.system-mobile-only {
+  display: none;
+}
+
+.system-desktop-only {
+  display: block;
+}
 
 @media (max-width: 900px) {
+  :root {
+    --section-space: 56px;
+  }
+
+  .system-desktop-only {
+    display: none !important;
+  }
+
+  .system-mobile-only {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Radar background on mobile */
+  .radar-visual {
+    width: 240px;
+    height: 240px;
+    opacity: 0.25;
+  }
+
+  /* Unified Mobile System Cards */
+  .system-mobile-unified-cards {
+    width: 100%;
+    margin-block-start: 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .system-mobile-card {
+    padding: 24px 20px;
+    border-radius: var(--radius-md);
+    background: rgba(0, 29, 83, 0.96);
+    border: 1px solid var(--gold-line);
+    color: var(--white);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .sys-mob-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .sys-mob-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 800;
+    border: 1px solid var(--gold-line);
+  }
+
+  .sys-mob-tag {
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--accent);
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: rgba(241, 198, 125, 0.14);
+  }
+
+  .system-mobile-card h3 {
+    color: var(--white);
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .sys-mob-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-block-start: 1px solid rgba(245, 247, 249, 0.12);
+    padding-block-start: 16px;
+  }
+
+  .sys-mob-body h4 {
+    color: var(--accent);
+    font-size: 0.98rem;
+    margin: 0;
+  }
+
+  .sys-mob-body ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .sys-mob-body li {
+    position: relative;
+    padding-inline-start: 20px;
+    color: rgba(245, 247, 249, 0.9);
+    font-size: 0.92rem;
+  }
+
+  .sys-mob-body li::before {
+    content: "✦";
+    position: absolute;
+    right: 0;
+    color: var(--accent);
+    font-size: 0.75rem;
+  }
+
+  .sys-mob-fit {
+    color: rgba(245, 247, 249, 0.75);
+    font-size: 0.88rem;
+    margin: 0;
+  }
+
   /* Why section layout */
   .why-layout {
     grid-template-columns: 1fr;

@@ -477,6 +477,7 @@ function initCardSpotlightAndTilt() {
   );
   if (!cards.length) return;
 
+  if (window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 768) return;
   cards.forEach((card) => {
     card.classList.add("spotlight-card");
 
