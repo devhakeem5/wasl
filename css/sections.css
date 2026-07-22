@@ -897,209 +897,135 @@ html[dir="rtl"] .transform-copy {
 }
 
 /* =====================================================================
-   SERVICES — شجرة متفرعة
+   SERVICES — ماتريكس الحلول البانورامي (Expanding 5-Column Studio Matrix)
    ===================================================================== */
 .services {
   padding-block: var(--section-space);
-}
-
-.services-tree {
   position: relative;
-  max-width: 900px;
-  margin-inline: auto;
-  padding-block: 40px;
+  overflow: hidden;
 }
 
-/* ─── Central Trunk ─── */
-.services-trunk {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 4px;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.services-trunk-svg {
-  width: 100%;
-  height: 100%;
-}
-
-.services-trunk-glow {
-  stroke: rgba(241, 198, 125, 0.08);
-  stroke-width: 4;
-}
-
-.services-trunk-line {
-  stroke: var(--accent);
-  stroke-width: 1.5;
-  filter: drop-shadow(0 0 4px rgba(241, 198, 125, 0.3));
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-  transition: stroke-dashoffset 1200ms var(--ease-in-out);
-}
-
-/* ─── Service Branches ─── */
-.service-branch {
+.solutions-panoramic-matrix {
+  display: flex;
+  gap: 16px;
+  min-height: 520px;
+  margin-block-start: 48px;
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  margin-block-end: 48px;
-  min-height: 180px;
+  z-index: 2;
+}
+
+.matrix-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 36px 28px;
+  border-radius: var(--radius-lg);
+  background: rgba(0, 20, 60, 0.75);
+  border: 1px solid rgba(241, 198, 125, 0.18);
+  backdrop-filter: blur(24px);
+  cursor: pointer;
+  overflow: hidden;
+  transition: flex 600ms var(--ease-out-expo), background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
+  position: relative;
+}
+
+.matrix-column:hover {
+  border-color: var(--gold-line);
+  box-shadow: 0 12px 40px rgba(0, 29, 83, 0.3);
+}
+
+.matrix-column.is-expanded {
+  flex: 3.5;
+  background: linear-gradient(160deg, #00133A 0%, #001D53 60%, #000B24 100%);
+  border-color: var(--accent);
+  box-shadow: 0 20px 60px rgba(0, 29, 83, 0.45), 0 0 30px rgba(241, 198, 125, 0.2);
+  cursor: default;
+}
+
+/* Column Header */
+.matrix-col-header {
+  display: flex;
   align-items: center;
+  gap: 14px;
+  margin-block-end: 24px;
+  flex-shrink: 0;
 }
 
-.service-branch:last-child {
-  margin-block-end: 0;
-}
-
-/* Branch line (horizontal) */
-.service-branch-line {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  filter: drop-shadow(0 0 4px rgba(237, 183, 92, 0.3));
-  transition: width 600ms var(--ease-out-expo);
-  z-index: 2;
-}
-
-/* Branch node (at junction) */
-.service-branch-node {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--accent);
-  border: 2px solid var(--white);
-  box-shadow: 0 0 16px var(--accent-glow);
-  z-index: 3;
-  transition: transform 400ms var(--ease-out-expo);
-}
-
-.service-branch.is-visible .service-branch-node {
-  transform: translate(-50%, -50%) scale(1);
-}
-
-/* Card */
-.service-branch-card {
-  padding: 32px 28px;
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-soft);
-  transition: transform 400ms ease, box-shadow 400ms ease;
-  position: relative;
-  z-index: 2;
-}
-
-.service-branch-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-deep);
-}
-
-/* Right branch: card on right */
-.service-branch-right .service-branch-card {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.service-branch-right .service-branch-line {
-  transform: translateY(-50%) translateX(0);
-  transform-origin: right center;
-}
-
-.service-branch-right.is-visible .service-branch-line {
-  width: calc(50% - 40px);
-  right: 50%;
-  left: auto;
-  transform: translateY(-50%);
-}
-
-/* Left branch: card on left */
-.service-branch-left .service-branch-card {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.service-branch-left .service-branch-line {
-  transform: translateY(-50%);
-  transform-origin: left center;
-}
-
-.service-branch-left.is-visible .service-branch-line {
-  width: calc(50% - 40px);
-  left: 50%;
-  transform: translateY(-50%);
-}
-
-/* Full width branch */
-.service-branch-full {
-  grid-template-columns: 1fr;
-}
-
-.service-branch-full .service-branch-card {
-  max-width: 600px;
-  margin-inline: auto;
-  grid-column: 1;
-}
-
-.service-branch-full .service-branch-line {
-  display: none;
-}
-
-/* Service card inner styles */
-.service-num {
-  display: inline-block;
-  margin-block-end: 12px;
+.matrix-col-num {
+  font-size: 1.1rem;
+  font-weight: 800;
   color: var(--accent);
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: 1px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(241, 198, 125, 0.12);
+  border: 1px solid var(--gold-line);
 }
 
-.service-branch-card h3 {
-  color: var(--primary-dark);
-  font-size: 1.45rem;
-  margin-block-end: 10px;
+.matrix-col-title {
+  color: var(--white);
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  margin: 0;
+  white-space: nowrap;
 }
 
-.service-branch-card p {
-  color: var(--secondary);
-  margin-block-end: 18px;
-  line-height: 1.8;
+/* Column Body (Hidden when collapsed, revealed smoothly when expanded) */
+.matrix-col-body {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: opacity 450ms ease, transform 450ms ease, visibility 450ms ease;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
-/* Service tags & glass pills */
-.service-tags {
+.matrix-column.is-expanded .matrix-col-body {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 200ms;
+}
+
+.matrix-quote {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--accent);
+  margin: 0;
+  padding-inline-start: 16px;
+  border-inline-start: 3px solid var(--accent);
+  line-height: 1.7;
+}
+
+.matrix-desc {
+  color: rgba(245, 247, 249, 0.88);
+  font-size: 0.98rem;
+  line-height: 1.85;
+  margin: 0;
+}
+
+.matrix-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-block-start: 16px;
+  gap: 10px;
+  margin-block-start: 8px;
 }
 
-.glass-pill {
-  font-size: 0.8rem;
+.matrix-pill {
+  font-size: 0.84rem;
   font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 16px;
-  background: rgba(0, 29, 83, 0.06);
-  border: 1px solid rgba(0, 29, 83, 0.12);
-  color: var(--primary);
-  transition: all 200ms ease;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: rgba(245, 247, 249, 0.06);
+  border: 1px solid rgba(245, 247, 249, 0.18);
+  color: var(--white);
+  transition: all 220ms ease;
 }
 
-.service-branch-card:hover .glass-pill {
-  border-color: var(--gold-line);
-  background: rgba(241, 198, 125, 0.15);
+.matrix-pill:hover {
+  background: rgba(241, 198, 125, 0.2);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
 }
 
 /* ─── Services Gateway Banner ─── */

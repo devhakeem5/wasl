@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initSystemCards();
   initRevealOnScroll();
   initSmoothAnchors();
-  initServicesTrunkScroll();
+  initPanoramicMatrix();
   initVIPCursor();
   initCardSpotlightAndTilt();
   initServicePills();
@@ -345,32 +345,25 @@ function initSystemCards() {
 }
 
 /* ------------------------------------------------------------------
-   9. Services Trunk — scroll-driven draw
+   9. Panoramic Strategy Matrix — expanding 5-column studio showcase
    ------------------------------------------------------------------ */
-function initServicesTrunkScroll() {
-  const servicesSection = document.getElementById("services");
-  const trunkLine = document.querySelector("[data-services-trunk-line]");
-  if (!servicesSection || !trunkLine) return;
+function initPanoramicMatrix() {
+  const matrix = document.querySelector("[data-matrix]");
+  if (!matrix) return;
 
-  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (prefersReduced) {
-    trunkLine.style.strokeDashoffset = "0";
-    return;
-  }
+  const cols = matrix.querySelectorAll("[data-matrix-col]");
+  if (!cols.length) return;
 
-  const updateTrunk = () => {
-    const rect = servicesSection.getBoundingClientRect();
-    const sectionHeight = rect.height;
-    const viewportHeight = window.innerHeight;
-    const scrolled = viewportHeight - rect.top;
-    const total = sectionHeight + viewportHeight;
-    const progress = Math.max(0, Math.min(1, scrolled / total));
-
-    trunkLine.style.strokeDashoffset = String(100 - progress * 100);
-  };
-
-  window.addEventListener("scroll", updateTrunk, { passive: true });
-  updateTrunk();
+  cols.forEach((col) => {
+    col.addEventListener("mouseenter", () => {
+      cols.forEach((c) => c.classList.remove("is-expanded"));
+      col.classList.add("is-expanded");
+    });
+    col.addEventListener("click", () => {
+      cols.forEach((c) => c.classList.remove("is-expanded"));
+      col.classList.add("is-expanded");
+    });
+  });
 }
 
 /* ------------------------------------------------------------------
