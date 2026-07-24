@@ -131,65 +131,284 @@
     margin: 0;
   }
 
-  /* Why section layout */
-  .why-layout {
+  /* ─── Why Section Mobile Adjustments ─── */
+  .why {
+    padding-block: 80px;
+  }
+  
+  .why-stacking-cards {
+    gap: 24px;
+    padding-bottom: 40px;
+  }
+
+  .why-card-wrapper {
+    position: relative; /* Disable sticky for smooth natural mobile flow */
+    top: auto !important;
+    padding-top: 0 !important;
+  }
+
+  .why-card {
+    padding: 30px 24px;
+    border-radius: 24px;
+  }
+
+  .why-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .why-card-desc {
+    font-size: 1rem;
+  }
+
+  .rev-item {
+    padding: 14px 20px;
+    font-size: 0.95rem;
+  }
+
+  /* ─── Moments Premium Mobile Adjustments ─── */
+  .moments {
+    padding-block: 80px;
+  }
+  
+  .bento-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    grid-auto-rows: auto;
+    gap: 16px;
+  }
+  
+  .bento-large, .bento-medium, .bento-wide {
+    grid-column: span 1;
+    grid-row: auto;
+  }
+  
+  .bento-wide {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .bento-wide .bento-content {
+    gap: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .bento-num {
+    font-size: clamp(3rem, 12vw, 4rem);
   }
 
-  .why-heading {
-    position: static;
+  /* ─── Hero Premium Mobile Adjustments ─── */
+  .hero-premium {
+    padding-block: 130px 80px;
   }
 
-  .why-scroll {
-    max-height: none;
-    overflow-y: visible;
-    padding-inline-end: 0;
+  .hero-premium-layout {
+    gap: 40px;
   }
 
-  /* Transform section items */
-  .transform-item {
+  /* ─── Transform Timeline Mobile Adjustments ─── */
+  .transform {
+    padding-block: 80px;
+  }
+
+  .timeline-central-line {
+    left: auto;
+    right: 20px;
+    transform: none;
+  }
+
+  .timeline-wrapper {
+    gap: 30px;
+  }
+
+  .timeline-item {
+    flex-direction: column !important;
+    align-items: flex-start;
+  }
+
+  .timeline-dot {
+    left: auto;
+    right: 20px;
+    transform: translate(50%, 0);
+    top: 40px;
+  }
+
+  .timeline-item:hover .timeline-dot {
+    transform: translate(50%, 0) scale(1.3);
+  }
+
+  .timeline-card {
+    width: calc(100% - 50px);
+    margin-right: 50px;
+    padding: 24px 20px;
+  }
+
+  .timeline-step-num {
+    top: 15px;
+    left: 20px; /* Move to left to balance icon and text */
+    right: auto;
+    font-size: 2rem;
+  }
+
+  .timeline-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .hero-title-wrapper {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .idea-col, .impact-col {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-connector-stage {
+    flex-direction: column;
+    gap: 12px;
+    margin-block: 10px;
+  }
+
+  .hero-line-glow {
+    width: 2px;
+    height: clamp(30px, 8vw, 60px);
+    background: linear-gradient(180deg, transparent, rgba(241, 198, 125, 0.6), transparent);
+  }
+
+  .hero-line-glow::after {
+    width: 8px;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .hero-logo-wrapper {
+    width: clamp(80px, 20vw, 100px);
+    height: clamp(80px, 20vw, 100px);
+  }
+
+  .hero-glass-card {
+    padding: 30px 24px;
+    border-radius: 24px;
+    max-width: 100%;
+  }
+
+  .hero-premium-desc {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .hero-premium-actions .button-glow {
+    padding: 14px 32px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ─── System Strategic Compass Mobile Adjustments ─── */
+  .system {
+    padding-block: 80px;
+  }
+
+  .system-compass-stage {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-block-start: 40px;
+  }
+
+  .compass-visual {
+    width: 280px;
+    height: 280px;
+  }
+
+  .compass-core {
+    width: 60px;
+    height: 60px;
+  }
+
+  .compass-logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .system-card {
+    padding: 20px;
     gap: 16px;
   }
 
-  /* System cards & details */
-  .system-cards {
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .system-detail-content {
+    padding: 0 20px 20px 20px;
   }
 
-  .system-detail-content {
+  /* ─── Services Immersive Studio Mobile ─── */
+  .services {
+    padding-block: 80px;
+  }
+
+  .solutions-master-studio {
     grid-template-columns: 1fr;
     gap: 24px;
+    margin-block-start: 40px;
   }
 
-  .radar-visual {
-    width: 320px;
-    height: 320px;
+  .studio-nav-hub {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
 
-  /* Services */
-  .service-branch,
-  .service-branch-right,
-  .service-branch-left,
-  .service-branch-full {
+  .studio-nav-item {
+    padding: 14px 12px;
+    gap: 10px;
+    transform: none !important;
+  }
+
+  .studio-nav-num {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+
+  .studio-nav-title {
+    font-size: 0.9rem;
+  }
+
+  .studio-nav-subtitle {
+    font-size: 0.72rem;
+  }
+
+  .studio-panel {
+    padding: 24px 20px;
+  }
+
+  .studio-watermark {
+    font-size: 6rem;
+  }
+
+  .studio-quote {
+    font-size: 0.95rem;
+    padding: 12px 14px;
+  }
+
+  .deliverables-grid {
     grid-template-columns: 1fr;
+    gap: 10px;
   }
 
-  .service-branch-card {
-    grid-column: 1 !important;
+  .deliverable-card {
+    padding: 14px 16px;
   }
 
-  .service-branch-line {
-    display: none;
+  .services-gateway-banner {
+    padding: 32px 24px;
+    margin-block-start: 40px;
   }
 
-  .services-trunk {
-    left: 24px;
+  .gateway-content h3 {
+    font-size: 1.15rem;
   }
 
-  .service-branch-node {
-    left: 24px;
+  .gateway-content p {
+    font-size: 0.9rem;
   }
 }
 
@@ -212,8 +431,8 @@
     height: 42px;
   }
 
-  .hero {
-    padding-block-start: 112px;
+  .hero-premium {
+    padding-block-start: 110px;
   }
 
   .hero-connector-badge {
